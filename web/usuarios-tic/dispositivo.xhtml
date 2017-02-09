@@ -1,21 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../template-hee.xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:define name="title">Registro de Bienes</ui:define>
+    <body>
 
-    <ui:define name="content">
-        <h:form id="frm_equipo">
+        <ui:composition template="./../template-hee.xhtml">
+
+            <ui:define name="Registro de Dispositivos">
+                title
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="frm_equipo">
             <p:panel id="panel">
                 <h:panelGroup id="pnl_group">
                     <p:panelGrid id="pnl_grid" style="width:100%">
                         <f:facet name="header">
                             <p:row>
-                                <p:column colspan="6">Registro de Equipos</p:column>
+                                <p:column colspan="6">Registro de Dispositivos</p:column>
                             </p:row>
                         </f:facet>
                         <p:row>
@@ -24,7 +30,8 @@
                             </p:column>
                             <p:column colspan="3">
                                 <p:selectOneMenu id="cbx_tipo_eq" value="#{mBBienes.categoria.tbSerial}" required="true" disabled="#{mBBienes.bol_det eq true}">
-                                    <f:selectItems  value="#{tTipoBienController.equipos}" var="tipo" itemValue="#{tipo.tbSerial}" itemLabel="#{tipo.tbNombre}"/>
+                                    <f:selectItem  itemLabel=""/>
+                                    <f:selectItems  value="#{tTipoBienController.dispositvos}" var="tipo" itemValue="#{tipo.tbSerial}" itemLabel="#{tipo.tbNombre}"/>
                                     <f:ajax render="cbx_tipo_eq"/>
                                 </p:selectOneMenu>
                             </p:column>
@@ -41,7 +48,7 @@
                             </p:column>
                             <p:column colspan="3"> 
                                 <p:selectOneMenu id="cbx_servicio" value="#{mBBienes.servicio.SSerial}" required="true"  disabled="#{mBBienes.bol_det eq true}">
-                                    <f:selectItems value="#{tServicioController.items}" var="ser" itemValue="#{ser.SSerial}" itemLabel="#{ser.SNombre}" />
+                                    <f:selectItems value="#{tServicioController.items}" var="ser" itemValue="#{ser.SSerial}" itemLabel="#{ser.SNombre}"/>
                                     <f:ajax render="cbx_servicio"/>
                                 </p:selectOneMenu>
                             </p:column>
@@ -66,6 +73,7 @@
                             </p:column>
                             <p:column>
                                 <p:selectOneMenu id="cbx_marc" value="#{mBBienes.marca.MSerial}" required="true" disabled="#{mBBienes.bol_det eq true}">
+                                    <f:selectItem itemLabel=""/>
                                     <f:selectItems value="#{tMarcaController.items}" var="mar" itemValue="#{mar.MSerial}" itemLabel="#{mar.MNombre}"/>
                                     <f:ajax render="cbx_marc"/>
                                 </p:selectOneMenu>
@@ -136,9 +144,8 @@
                         <f:facet name="footer">
                             <p:row>
                                 <p:column colspan="6">
-                                    <p:commandButton id="btn_reg" value="Registrar" icon="ui-icon-disk" rendered="#{mBBienes.bol_det eq false}" actionListener="#{mBBienes.crearEquipo()}" update=":frm_equipo :growl"/>
-                                    <p:commandButton id="btn_new" value="Crear equipo nuevo" icon="ui-icon-refresh" rendered="#{mBBienes.bol_det eq true}" actionListener="#{mBBienes.limpiar()}" update=":frm_equipo"/>          
-                                    <p:commandButton id="btn_add" value="Agregar dispositivos" icon="ui-icon-plus" rendered="#{mBBienes.bol_det eq true}"  onclick="PF('wv_crear_det').show();" update=":frm_crear_detalle"/>
+                                    <p:commandButton id="btn_reg" value="Registrar" icon="ui-icon-disk" rendered="#{mBBienes.bol_det eq false}" actionListener="#{mBBienes.crearEquipo()}" action="/tBien/tabla_dispositivos" update=":frm_equipo :growl"/>
+                                    <p:commandButton id="btn_new" value="Crear Dispositivo nuevo" icon="ui-icon-refresh" rendered="#{mBBienes.bol_det eq true}" actionListener="#{mBBienes.limpiar()}" update=":frm_equipo"/>          
                                 </p:column>
                             </p:row>
                         </f:facet>
@@ -146,61 +153,13 @@
                 </h:panelGroup>
             </p:panel>
             <p:separator/>
-            <p:panel rendered="#{mBBienes.bol_det eq true and tBienController.tbl_det eq true }">
-                <p:dataTable id="datalist" value="#{tBienController.detalles}" var="det"
-                             paginator="true"
-                             rowKey="#{item.tbSerial}"
-                             rows="10"
-                             rowsPerPageTemplate="10,20,30,40,50"
-                             >
-                    <p:column headerText="Cod-HEE">
-                        <p:outputLabel value="#{det.BCodigoHee}"/>
-                    </p:column>
-                    <p:column headerText="Dispositivo">
-                        <p:outputLabel value="#{det.tbSerial.tbNombre}"/>
-                    </p:column>
-                    <p:column headerText="Marca">
-                        <p:outputLabel value="#{det.MSerial.MNombre}"/>
-                    </p:column>
-                    <p:column headerText="Bitácora:">
-                        <p:outputLabel value="#{det.BDescripcion}"/>
-                    </p:column>
-                    <p:column headerText="Modificaciones">
-                        <p:commandLink value="Editar" oncomplete="PF('wv_editar_det').show();" update=":frm_editar_det" title="Editar dispositivo" styleClass="ui-icon ui-icon-pencil">
-                            <f:setPropertyActionListener target="#{tBienController.detalle}" value="#{det}"/>
-                        </p:commandLink>
-                        <p:commandLink value="Eliminar" oncomplete="PF('dlg_eliminar_det').show();" update=":formEliminar" title="Eliminar dispositivo" styleClass="ui-icon ui-icon-trash">
-                            <f:setPropertyActionListener target="#{tBienController.detalle}" value="#{det}" />               
-                        </p:commandLink>
-                    </p:column>
-                </p:dataTable>
-            </p:panel>
+            
         </h:form>
-        <ui:include src="/usuarios-tic/dlg_editar_detalle.xhtml"/>
-        <ui:include src="/usuarios-tic/dlg-crear-detalle.xhtml"/>
-        <h:form id="formEliminar">
-            <p:dialog id="dlgEliminarCarrera" header="Eliminar Registro!" widgetVar="dlg_eliminar_det" resizable="false" 
-                      showEffect="explode" hideEffect="explode" modal="true">
+      
+   
+            </ui:define>
 
-                <p:panelGrid style="width: 100%" >
-                    <p:row>
-                        <p:column>
-                            <h:outputText value="Desea continuar con la transacción?"/>
-                        </p:column>
-                    </p:row>
-                    <f:facet name="footer">
-                        <p:row>
-                            <p:column>
-                                <p:commandButton value="Si" actionListener="#{tBienController.eliminarDet()}"
-                                                 update=":frm_equipo:datalist :growl" 
-                                                 oncomplete="PF('dlg_eliminar_det').hide();"/>
-                                <p:commandButton value="No" oncomplete="PF('dlg_eliminar_det').hide();"/>
-                            </p:column>
-                        </p:row>
-                    </f:facet>
-                </p:panelGrid>
-            </p:dialog>
-        </h:form>
-    </ui:define>
+        </ui:composition>
 
-</ui:composition>
+    </body>
+</html>

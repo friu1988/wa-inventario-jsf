@@ -51,4 +51,15 @@ public class TBienFacade extends AbstractFacade<TBien> {
         }
         return null;
     }
+    
+    public List<TBien> findDispositivos(){
+        Query sql = em.createNamedQuery("TBien.findDispositivos");
+        try {
+            List<TBien> lista = sql.getResultList();
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Error Buscar detalle >>>>>" + e.getMessage());
+        }
+        return null;
+    }
 }
