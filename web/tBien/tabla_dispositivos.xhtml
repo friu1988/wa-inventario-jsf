@@ -14,7 +14,7 @@
                 title
             </ui:define>
 <ui:define name="content">
-            <h:form id="TBienListFormDisp">
+            <h:form id="TBienListForm">
                 <p:panel header="#{recursos.ListTBienTitle}">
                     <p:dataTable id="datalist" value="#{mBEquipos.dispositivos}" var="cabecera"
                                  selectionMode="single" selection="#{mBEquipos.selected}"
@@ -39,9 +39,6 @@
                         <p:column headerText="#{recursos.ListTBienTitle_BSerie}" filterBy="#{cabecera.BSerie}" filterMatchMode="contains">
                             <h:outputText value="#{cabecera.BSerie}"/>
                         </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_BIpAdress}" filterBy="#{cabecera.BIpAdress}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.BIpAdress}"/>
-                        </p:column>
                         <p:column headerText="#{recursos.ListTBienTitle_BModelo}" filterBy="#{cabecera.BModelo}" filterMatchMode="contains">
                             <h:outputText value="#{cabecera.BModelo}"/>
                         </p:column>
@@ -56,7 +53,7 @@
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{recursos.View}" update=":TBienViewForm" oncomplete="PF('TBienViewDialog').show()" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{recursos.Edit}" actionListener="#{mBEquipos.pasarCabecera()}" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{recursos.Edit}" actionListener="#{mBEquipos.pasarCabecera()}" action="/tBien/editar_dispositivo.xhtml" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{recursos.Delete}" actionListener="#{mBEquipos.destroy}" update=":growl,datalist" disabled="#{empty mBEquipos.selected}" style="width: 90px" rendered="#{mBEquipos.btnEliminar eq true}"/>
                         </f:facet>
                     </p:dataTable>

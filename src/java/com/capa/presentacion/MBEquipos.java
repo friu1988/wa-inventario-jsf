@@ -47,7 +47,7 @@ public class MBEquipos implements Serializable {
     public void pasarCabecera() throws IOException {
         System.out.println("Cabecera enviada>>>" + selected.getBCodigoHee());
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("cabecera", selected);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("./../tBien/editar_equipos.xhtml");
+        //FacesContext.getCurrentInstance().getExternalContext().redirect("./../tBien/editar_equipos.xhtml");
         selected = null;
 
     }
