@@ -77,13 +77,12 @@ public class MBEquipos implements Serializable {
         return resultado;
     }
  public List<TBien> cargarDispositivos() {
-        List<TBien> temporal = srvEq.findAll();
+        List<TBien> temporal = srvEq.findDispositivos();
         List<TBien> resultado = new LinkedList<>();
 
         for (TBien tBien : temporal) {
-            if (tBien.getPadreBserial() == null) {
+            if(tBien.getTbSerial().getTbTipo().equals("DISPOSITIVO"))
                 resultado.add(tBien);
-            }
             
         }
         return resultado;
