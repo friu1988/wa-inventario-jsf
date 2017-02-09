@@ -29,18 +29,6 @@
                 <p:column headerText="Servicio">
                     <h:outputText value="#{item.SSerial.SNombre}"/>
                 </p:column>
-                <p:column headerText="Sistema Operativo">
-                    <h:outputText value="#{item.soSerial.soCadena}"/>
-                </p:column>
-                <p:column headerText="Responsable">
-                    <h:outputText value="#{item.RSerial.RNombres}"/>
-                </p:column>
-                 <p:column headerText="Serie">
-                    <h:outputText value="#{item.soSerial.soCadena}"/>
-                </p:column>
-                <p:column headerText="IP/MAC-add">
-                    <h:outputText value="#{item.RSerial.RNombres}"/>
-                </p:column>
                 <p:column headerText="Modificar">
                     <p:commandLink update=":frm_treetable:pnl_visualizar" oncomplete="PF('wv_visualizar').show()" title="Ver Detallles" styleClass="ui-icon ui-icon-search">
                         <f:setPropertyActionListener value="#{item}" target="#{treeTableManagedBean.equipo}" />
