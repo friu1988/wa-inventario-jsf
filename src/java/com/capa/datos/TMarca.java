@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @UniqueConstraint(columnNames = {"m_nombre"})})
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TMarca.findAll", query = "SELECT t FROM TMarca t"),
+    @NamedQuery(name = "TMarca.findAll", query = "SELECT t FROM TMarca t ORDER BY t.mNombre"),
     @NamedQuery(name = "TMarca.findByMSerial", query = "SELECT t FROM TMarca t WHERE t.mSerial = :mSerial"),
     @NamedQuery(name = "TMarca.findByMNombre", query = "SELECT t FROM TMarca t WHERE t.mNombre = :mNombre")})
 public class TMarca implements Serializable {

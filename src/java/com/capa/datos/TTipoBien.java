@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @UniqueConstraint(columnNames = {"tb_nombre"})})
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TTipoBien.findAll", query = "SELECT t FROM TTipoBien t"),
+    @NamedQuery(name = "TTipoBien.findAll", query = "SELECT t FROM TTipoBien t ORDER BY t.tbNombre"),
     @NamedQuery(name = "TTipoBien.findByTbSerial", query = "SELECT t FROM TTipoBien t WHERE t.tbSerial = :tbSerial"),
-    @NamedQuery(name = "TTipoBien.findByTbNombre", query = "SELECT t FROM TTipoBien t WHERE t.tbNombre = :tbNombre"),
-    @NamedQuery(name = "TTipoBien.findByTbTipo", query = "SELECT t FROM TTipoBien t WHERE t.tbTipo = :tbTipo")})
+    @NamedQuery(name = "TTipoBien.findByTbNombre", query = "SELECT t FROM TTipoBien t WHERE t.tbNombre = :tbNombre ORDER BY t.tbNombre"),
+    @NamedQuery(name = "TTipoBien.findByTbTipo", query = "SELECT t FROM TTipoBien t WHERE t.tbTipo = :tbTipo ORDER BY t.tbNombre")})
 public class TTipoBien implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -76,7 +76,7 @@ public class TResponsableController implements Serializable {
 
     public List<TResponsable> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacade().getAll();
         }
         return items;
     }
@@ -114,11 +114,11 @@ public class TResponsableController implements Serializable {
     }
 
     public List<TResponsable> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        return getFacade().getAll();
     }
 
     public List<TResponsable> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        return getFacade().getAll();
     }
 
     @FacesConverter(forClass = TResponsable.class)

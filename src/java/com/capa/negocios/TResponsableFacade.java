@@ -6,9 +6,11 @@
 package com.capa.negocios;
 
 import com.capa.datos.TResponsable;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,9 @@ public class TResponsableFacade extends AbstractFacade<TResponsable> {
         super(TResponsable.class);
     }
     
+     public List<TResponsable> getAll() {
+        Query sql = em.createNamedQuery("TResponsable.findAll");
+        List<TResponsable> responsables = sql.getResultList();
+        return responsables;
+    }
 }

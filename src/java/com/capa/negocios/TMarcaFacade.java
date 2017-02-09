@@ -6,9 +6,12 @@
 package com.capa.negocios;
 
 import com.capa.datos.TMarca;
+import com.capa.datos.TResponsable;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +31,10 @@ public class TMarcaFacade extends AbstractFacade<TMarca> {
     public TMarcaFacade() {
         super(TMarca.class);
     }
-    
+
+     public List<TMarca> getAll() {
+        Query sql = em.createNamedQuery("TMarca.findAll");
+        List<TMarca> marcas = sql.getResultList();
+        return marcas;
+    }    
 }

@@ -5,10 +5,13 @@
  */
 package com.capa.negocios;
 
+import com.capa.datos.TResponsable;
 import com.capa.datos.TSistemaOperativo;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +32,9 @@ public class TSistemaOperativoFacade extends AbstractFacade<TSistemaOperativo> {
         super(TSistemaOperativo.class);
     }
     
+         public List<TSistemaOperativo> getAll() {
+        Query sql = em.createNamedQuery("TSistemaOperativo.findAll");
+        List<TSistemaOperativo> sistemas = sql.getResultList();
+        return sistemas;
+    }
 }

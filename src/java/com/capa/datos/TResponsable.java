@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "t_responsable", catalog = "db_inventario_hee", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TResponsable.findAll", query = "SELECT t FROM TResponsable t"),
-    @NamedQuery(name = "TResponsable.findByRSerial", query = "SELECT t FROM TResponsable t WHERE t.rSerial = :rSerial"),
-    @NamedQuery(name = "TResponsable.findByRNombres", query = "SELECT t FROM TResponsable t WHERE t.rNombres = :rNombres"),
-    @NamedQuery(name = "TResponsable.findByRCargo", query = "SELECT t FROM TResponsable t WHERE t.rCargo = :rCargo")})
+    @NamedQuery(name = "TResponsable.findAll", query = "SELECT t FROM TResponsable t ORDER BY t.rNombres"),
+    @NamedQuery(name = "TResponsable.findByRSerial", query = "SELECT t FROM TResponsable t WHERE t.rSerial = :rSerial ORDER BY t.rNombres"),
+    @NamedQuery(name = "TResponsable.findByRNombres", query = "SELECT t FROM TResponsable t WHERE t.rNombres = :rNombres ORDER BY t.rNombres"),
+    @NamedQuery(name = "TResponsable.findByRCargo", query = "SELECT t FROM TResponsable t WHERE t.rCargo = :rCargo ORDER BY t.rNombres")})
 public class TResponsable implements Serializable {
 
     private static final long serialVersionUID = 1L;
