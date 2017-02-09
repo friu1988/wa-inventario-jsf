@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "t_servicio", catalog = "db_inventario_hee", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TServicio.findAll", query = "SELECT t FROM TServicio t"),
-    @NamedQuery(name = "TServicio.findBySSerial", query = "SELECT t FROM TServicio t WHERE t.sSerial = :sSerial"),
-    @NamedQuery(name = "TServicio.findBySCodigo", query = "SELECT t FROM TServicio t WHERE t.sCodigo = :sCodigo"),
-    @NamedQuery(name = "TServicio.findBySNombre", query = "SELECT t FROM TServicio t WHERE t.sNombre = :sNombre"),
-    @NamedQuery(name = "TServicio.findBySUbicacion", query = "SELECT t FROM TServicio t WHERE t.sUbicacion = :sUbicacion"),
-    @NamedQuery(name = "TServicio.findBySDescripcion", query = "SELECT t FROM TServicio t WHERE t.sDescripcion = :sDescripcion"),
-    @NamedQuery(name = "TServicio.findBySEstado", query = "SELECT t FROM TServicio t WHERE t.sEstado = :sEstado")})
+    @NamedQuery(name = "TServicio.findAll", query = "SELECT t FROM TServicio t ORDER BY t.sNombre"),
+    @NamedQuery(name = "TServicio.findBySSerial", query = "SELECT t FROM TServicio t WHERE t.sSerial = :sSerial ORDER BY t.sNombre"),
+    @NamedQuery(name = "TServicio.findBySCodigo", query = "SELECT t FROM TServicio t WHERE t.sCodigo = :sCodigo ORDER BY t.sNombre"),
+    @NamedQuery(name = "TServicio.findBySNombre", query = "SELECT t FROM TServicio t WHERE t.sNombre = :sNombre ORDER BY t.sNombre"),
+    @NamedQuery(name = "TServicio.findBySUbicacion", query = "SELECT t FROM TServicio t WHERE t.sUbicacion = :sUbicacion ORDER BY t.sNombre"),
+    @NamedQuery(name = "TServicio.findBySDescripcion", query = "SELECT t FROM TServicio t WHERE t.sDescripcion = :sDescripcion ORDER BY t.sNombre"),
+    @NamedQuery(name = "TServicio.findBySEstado", query = "SELECT t FROM TServicio t WHERE t.sEstado = :sEstado ORDER BY t.sNombre")})
 public class TServicio implements Serializable {
 
     private static final long serialVersionUID = 1L;

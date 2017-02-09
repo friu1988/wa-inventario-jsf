@@ -24,7 +24,6 @@
                             </p:column>
                             <p:column colspan="3">
                                 <p:selectOneMenu id="cbx_tipo_eq" value="#{mBBienes.categoria.tbSerial}" required="true" disabled="#{mBBienes.bol_det eq true}">
-                                    <f:selectItem  itemLabel=""/>
                                     <f:selectItems  value="#{tTipoBienController.equipos}" var="tipo" itemValue="#{tipo.tbSerial}" itemLabel="#{tipo.tbNombre}"/>
                                     <f:ajax render="cbx_tipo_eq"/>
                                 </p:selectOneMenu>
@@ -42,7 +41,7 @@
                             </p:column>
                             <p:column colspan="3"> 
                                 <p:selectOneMenu id="cbx_servicio" value="#{mBBienes.servicio.SSerial}" required="true"  disabled="#{mBBienes.bol_det eq true}">
-                                    <f:selectItems value="#{tServicioController.items}" var="ser" itemValue="#{ser.SSerial}" itemLabel="#{ser.SNombre}"/>
+                                    <f:selectItems value="#{tServicioController.items}" var="ser" itemValue="#{ser.SSerial}" itemLabel="#{ser.SNombre}" />
                                     <f:ajax render="cbx_servicio"/>
                                 </p:selectOneMenu>
                             </p:column>
@@ -67,7 +66,6 @@
                             </p:column>
                             <p:column>
                                 <p:selectOneMenu id="cbx_marc" value="#{mBBienes.marca.MSerial}" required="true" disabled="#{mBBienes.bol_det eq true}">
-                                    <f:selectItem itemLabel=""/>
                                     <f:selectItems value="#{tMarcaController.items}" var="mar" itemValue="#{mar.MSerial}" itemLabel="#{mar.MNombre}"/>
                                     <f:ajax render="cbx_marc"/>
                                 </p:selectOneMenu>

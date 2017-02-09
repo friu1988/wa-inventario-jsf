@@ -44,4 +44,6 @@ public class TTipoBienFacade extends AbstractFacade<TTipoBien> {
         List<TTipoBien> dispositivos = sql.getResultList();
         return dispositivos;
     }
+    
+    
 }

@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "t_sistema_operativo", catalog = "db_inventario_hee", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TSistemaOperativo.findAll", query = "SELECT t FROM TSistemaOperativo t"),
+    @NamedQuery(name = "TSistemaOperativo.findAll", query = "SELECT t FROM TSistemaOperativo t ORDER BY t.soCadena"),
     @NamedQuery(name = "TSistemaOperativo.findBySoSerial", query = "SELECT t FROM TSistemaOperativo t WHERE t.soSerial = :soSerial"),
     @NamedQuery(name = "TSistemaOperativo.findBySoNombre", query = "SELECT t FROM TSistemaOperativo t WHERE t.soNombre = :soNombre"),
     @NamedQuery(name = "TSistemaOperativo.findBySoVersion", query = "SELECT t FROM TSistemaOperativo t WHERE t.soVersion = :soVersion"),

@@ -6,6 +6,7 @@
 package com.capa.negocios;
 
 import com.capa.datos.TServicio;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,6 +36,12 @@ public class TServicioFacade extends AbstractFacade<TServicio> {
         sql.setParameter("sNombre", "NO ASIGNADO");
         TServicio servicio = (TServicio) sql.getSingleResult();
         return servicio;
+    }
+
+    public List<TServicio> getAll() {
+        Query sql = em.createNamedQuery("TServicio.findAll");
+        List<TServicio> servicios = sql.getResultList();
+        return servicios;
     }
 
 }

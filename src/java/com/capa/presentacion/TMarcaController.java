@@ -76,7 +76,7 @@ public class TMarcaController implements Serializable {
 
     public List<TMarca> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacade().getAll();
         }
         return items;
     }
@@ -114,11 +114,11 @@ public class TMarcaController implements Serializable {
     }
 
     public List<TMarca> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        return getFacade().getAll();
     }
 
     public List<TMarca> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        return getFacade().getAll();
     }
 
     @FacesConverter(forClass = TMarca.class)

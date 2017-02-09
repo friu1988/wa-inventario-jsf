@@ -77,7 +77,7 @@ public class TSistemaOperativoController implements Serializable {
 
     public List<TSistemaOperativo> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacade().getAll();
         }
         return items;
     }
@@ -115,11 +115,11 @@ public class TSistemaOperativoController implements Serializable {
     }
 
     public List<TSistemaOperativo> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        return getFacade().getAll();
     }
 
     public List<TSistemaOperativo> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        return getFacade().getAll();
     }
 
     @FacesConverter(forClass = TSistemaOperativo.class)

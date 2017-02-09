@@ -39,17 +39,11 @@
                         <p:column headerText="#{recursos.ListTBienTitle_BIpAdress}" filterBy="#{cabecera.BIpAdress}" filterMatchMode="contains">
                             <h:outputText value="#{cabecera.BIpAdress}"/>
                         </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_BModelo}" filterBy="#{cabecera.BModelo}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.BModelo}"/>
-                        </p:column>
                         <p:column headerText="#{recursos.ListTBienTitle_SSerial}" filterBy="#{cabecera.SSerial.SNombre}" filterMatchMode="contains">
                             <h:outputText value="#{cabecera.SSerial.SNombre}"/>
                         </p:column>
                         <p:column headerText="#{recursos.ListTBienTitle_soSerial}" filterBy="#{cabecera.soSerial.soCadena}" filterMatchMode="contains">
                             <h:outputText value="#{cabecera.soSerial.soCadena}"/>
-                        </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_RSerial}" filterBy="#{cabecera.RSerial.RNombres}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.RSerial.RNombres}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{recursos.View}" update=":TBienViewForm" oncomplete="PF('TBienViewDialog').show()" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>

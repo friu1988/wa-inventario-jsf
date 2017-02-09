@@ -35,7 +35,7 @@ public class MBEquipos implements Serializable {
         us = new TUsuario();
         us = (TUsuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLogin");
         if (us.getUTipo().equals("U")) {
-            setBtnEliminar(false);
+            setBtnEliminar(true);
         } else if (us.getUTipo().equals("C")) {
             setBtnCrear(false);
             setBtnEliminar(false);

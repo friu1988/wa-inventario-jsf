@@ -13,54 +13,48 @@
             <ui:define name="Dispositivos">
                 title
             </ui:define>
-<ui:define name="content">
-            <h:form id="TBienListForm">
-                <p:panel header="#{recursos.ListTBienTitle}">
-                    <p:dataTable id="datalist" value="#{mBEquipos.dispositivos}" var="cabecera"
-                                 selectionMode="single" selection="#{mBEquipos.selected}"
-                                 paginator="true"
-                                 rowKey="#{cabecera.BSerial}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+            <ui:define name="content">
+                <h:form id="TBienListForm">
+                    <p:panel header="#{recursos.ListTBienTitle}">
+                        <p:dataTable id="datalist" value="#{mBEquipos.dispositivos}" var="cabecera"
+                                     selectionMode="single" selection="#{mBEquipos.selected}"
+                                     paginator="true"
+                                     rowKey="#{cabecera.BSerial}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     >
 
-                        <p:ajax event="rowSelect"   update="viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="viewButton editButton deleteButton"/>
+                            <p:ajax event="rowSelect"   update="viewButton editButton deleteButton"/>
+                            <p:ajax event="rowUnselect" update="viewButton editButton deleteButton"/>
 
-                        <p:column headerText="#{recursos.ListTBienTitle_BCodigoHee}" filterBy="#{cabecera.BCodigoHee}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.BCodigoHee}"/>
-                        </p:column>
-                        <p:column headerText="Equipo" filterBy="#{cabecera.tbSerial.tbNombre}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.tbSerial.tbNombre}"/>
-                        </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_MSerial}" filterBy="#{cabecera.MSerial.MNombre}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.MSerial.MNombre}"/>
-                        </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_BSerie}" filterBy="#{cabecera.BSerie}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.BSerie}"/>
-                        </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_BModelo}" filterBy="#{cabecera.BModelo}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.BModelo}"/>
-                        </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_SSerial}" filterBy="#{cabecera.SSerial.SNombre}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.SSerial.SNombre}"/>
-                        </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_soSerial}" filterBy="#{cabecera.soSerial.soCadena}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.soSerial.soCadena}"/>
-                        </p:column>
-                        <p:column headerText="#{recursos.ListTBienTitle_RSerial}" filterBy="#{cabecera.RSerial.RNombres}" filterMatchMode="contains">
-                            <h:outputText value="#{cabecera.RSerial.RNombres}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{recursos.View}" update=":TBienViewForm" oncomplete="PF('TBienViewDialog').show()" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{recursos.Edit}" actionListener="#{mBEquipos.pasarCabecera()}" action="/tBien/editar_dispositivo.xhtml" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{recursos.Delete}" actionListener="#{mBEquipos.destroy}" update=":growl,datalist" disabled="#{empty mBEquipos.selected}" style="width: 90px" rendered="#{mBEquipos.btnEliminar eq true}"/>
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>
-            <ui:include src="ver_equipo.xhtml"/>
-        </ui:define>
+                            <p:column headerText="#{recursos.ListTBienTitle_BCodigoHee}" filterBy="#{cabecera.BCodigoHee}" filterMatchMode="contains">
+                                <h:outputText value="#{cabecera.BCodigoHee}"/>
+                            </p:column>
+                            <p:column headerText="Equipo" filterBy="#{cabecera.tbSerial.tbNombre}" filterMatchMode="contains">
+                                <h:outputText value="#{cabecera.tbSerial.tbNombre}"/>
+                            </p:column>
+                            <p:column headerText="#{recursos.ListTBienTitle_MSerial}" filterBy="#{cabecera.MSerial.MNombre}" filterMatchMode="contains">
+                                <h:outputText value="#{cabecera.MSerial.MNombre}"/>
+                            </p:column>
+                            <p:column headerText="#{recursos.ListTBienTitle_BSerie}" filterBy="#{cabecera.BSerie}" filterMatchMode="contains">
+                                <h:outputText value="#{cabecera.BSerie}"/>
+                            </p:column>
+                            <p:column headerText="#{recursos.ListTBienTitle_SSerial}" filterBy="#{cabecera.SSerial.SNombre}" filterMatchMode="contains">
+                                <h:outputText value="#{cabecera.SSerial.SNombre}"/>
+                            </p:column>
+                            <p:column headerText="#{recursos.ListTBienTitle_soSerial}" filterBy="#{cabecera.soSerial.soCadena}" filterMatchMode="contains">
+                                <h:outputText value="#{cabecera.soSerial.soCadena}"/>
+                            </p:column>
+                            <f:facet name="footer">
+                                <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{recursos.View}" update=":TBienViewForm" oncomplete="PF('TBienViewDialog').show()" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{recursos.Edit}" actionListener="#{mBEquipos.pasarCabecera()}" action="/tBien/editar_dispositivo.xhtml" disabled="#{empty mBEquipos.selected}" style="width: 90px"/>
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{recursos.Delete}" actionListener="#{mBEquipos.destroy}" update=":growl,datalist" disabled="#{empty mBEquipos.selected}" style="width: 90px" rendered="#{mBEquipos.btnEliminar eq true}"/>
+                            </f:facet>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+                <ui:include src="ver_equipo.xhtml"/>
+            </ui:define>
 
         </ui:composition>
 

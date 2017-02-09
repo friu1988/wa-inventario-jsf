@@ -6,6 +6,8 @@ import com.capa.presentacion.util.JsfUtil.PersistAction;
 import com.capa.negocios.TServicioFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -76,7 +78,8 @@ public class TServicioController implements Serializable {
 
     public List<TServicio> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacade().getAll();
+
         }
         return items;
     }
@@ -114,11 +117,12 @@ public class TServicioController implements Serializable {
     }
 
     public List<TServicio> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        return getFacade().getAll();
     }
 
     public List<TServicio> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<TServicio> servicios = getFacade().getAll();
+        return servicios;
     }
 
     @FacesConverter(forClass = TServicio.class)

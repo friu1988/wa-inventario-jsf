@@ -55,8 +55,8 @@ public class TBien implements Serializable {
     @Basic(optional = false)
     @Column(name = "b_serial", nullable = false)
     private Integer bSerial;
-    @Size(max = 17)
-    @Column(name = "b_codigo_hee", length = 17)
+    @Size(max = 50)
+    @Column(name = "b_codigo_hee", length = 50)
     private String bCodigoHee;
     @Size(max = 18)
     @Column(name = "b_ip_adress", length = 18)
