@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+        <p:dialog id="dlg_crear_det" widgetVar="wv_crear_det" modal="true" resizable="false" appendTo="@(body)" header="Agregar Dispositivo ">
+            <h:form id="frm_crear_detalle">
+                <p:panelGrid style="width: 100%">
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column colspan="4">Cabecera</p:column>
+                        </p:row>
+                    </f:facet>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="lbl_pk" value="Código TIC:"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="lbl_pk" value="#{tBienController.equipoPK.BSerial}" disabled="true">
+                                <f:ajax render="lbl_pk"/>
+                            </p:inputText>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel for="lbl_pk2" value="Código HEE:"/>        
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="lbl_pk2" value="#{tBienController.equipoPK.BCodigoHee}" disabled="true">
+                                <f:ajax render="lbl_pk2"/>
+                            </p:inputText>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header">
+                            <p:spacer height="0"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="4">
+                            <font color="red" style="font-style: italic">Ingresar detalles</font>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="cbx_tipo_eq" value="Dispositivo: "/>                                        
+                        </p:column>
+                        <p:column>
+                            <p:selectOneMenu id="cbx_tipo_eq" value="#{tBienController.categoria.tbSerial}" required="true">
+                                <f:selectItem  itemLabel=""/>
+                                <f:selectItems  value="#{tTipoBienController.dispositvos}" var="tipo" itemValue="#{tipo.tbSerial}" itemLabel="#{tipo.tbNombre}"/>
+                                <f:ajax render="cbx_tipo_eq"/>
+                            </p:selectOneMenu>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Código HEE: " for="lbl_chee"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="lbl_chee" value="#{tBienController.detalle.BCodigoHee}" placeholder="No asignado"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Marca: " for="cbx_marc"/>
+                        </p:column>
+                        <p:column>
+                            <p:selectOneMenu id="cbx_marc" value="#{tBienController.marca.MSerial}" required="true">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItems value="#{tMarcaController.items}" var="mar" itemValue="#{mar.MSerial}" itemLabel="#{mar.MNombre}"/>
+                            </p:selectOneMenu>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Capacidad: " for="lbl_cap" />
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="lbl_cap" value="#{tBienController.detalle.BCapacidad}"  placeholder="No aplica"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Modelo: " for="cbx_mod"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="cbx_mod" value="#{tBienController.detalle.BModelo}"  placeholder="No aplica"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Tipo: " for="cbx_tipo"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="cbx_tipo" value="#{tBienController.detalle.BTipo}"  placeholder="No aplica"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Serie: " for="cbx_serie"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="cbx_serie" value="#{tBienController.detalle.BSerie}"   placeholder="No aplica"/>
+                        </p:column>
+
+                        <p:column>
+                            <p:outputLabel value="Estado: " for="chk_estado_dos" />
+                        </p:column>
+                        <p:column>
+                            <p:selectBooleanCheckbox id="chk_estado_dos" value="#{tBienController.detalle.BEstado}"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Observación:" for="cbx_obs"/>
+                        </p:column>
+                        <p:column colspan="3">
+                            <p:inputTextarea id="cbx_obs" style="width:100%" value="#{tBienController.detalle.BDescripcion}"/>
+                        </p:column>
+                    </p:row>
+                    <f:facet name="footer">
+                        <p:row>
+                            <p:column colspan="4">                               
+                                <p:commandButton 
+                                    value="Guardar" 
+                                    actionListener="#{tBienController.crearDetalle()}"  
+                                    update=":frm_crear_detalle :frm_equipo,cbx_tipo_eq :growl"
+                                    oncomplete="handleSubmit(args,'wv_crear_det');" />
+                            </p:column>
+                        </p:row>
+                    </f:facet>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TMenuCreateDlg" widgetVar="TMenuCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.CreateTMenuTitle}">
+            <h:form id="TMenuCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tMenuController.selected != null}">
+                        <p:outputLabel value="#{recursos.CreateTMenuLabel_MSerial}" for="MSerial" />
+                        <p:inputText id="MSerial" value="#{tMenuController.selected.MSerial}" title="#{recursos.CreateTMenuTitle_MSerial}" required="true" requiredMessage="#{recursos.CreateTMenuRequiredMessage_MSerial}"/>
+                        <p:outputLabel value="#{recursos.CreateTMenuLabel_MOrden}" for="MOrden" />
+                        <p:inputText id="MOrden" value="#{tMenuController.selected.MOrden}" title="#{recursos.CreateTMenuTitle_MOrden}" />
+                        <p:outputLabel value="#{recursos.CreateTMenuLabel_MNombre}" for="MNombre" />
+                        <p:inputText id="MNombre" value="#{tMenuController.selected.MNombre}" title="#{recursos.CreateTMenuTitle_MNombre}" />
+                        <p:outputLabel value="#{recursos.CreateTMenuLabel_MUrl}" for="MUrl" />
+                        <p:inputText id="MUrl" value="#{tMenuController.selected.MUrl}" title="#{recursos.CreateTMenuTitle_MUrl}" />
+                        <p:outputLabel value="#{recursos.CreateTMenuLabel_MTipo}" for="MTipo" />
+                        <p:inputText id="MTipo" value="#{tMenuController.selected.MTipo}" title="#{recursos.CreateTMenuTitle_MTipo}" />
+                        <p:outputLabel value="#{recursos.CreateTMenuLabel_MNivel}" for="MNivel" />
+                        <p:inputText id="MNivel" value="#{tMenuController.selected.MNivel}" title="#{recursos.CreateTMenuTitle_MNivel}" />
+                        <p:outputLabel value="#{recursos.CreateTMenuLabel_padreMSerial}" for="padreMSerial" />
+                        <p:selectOneMenu id="padreMSerial" value="#{tMenuController.selected.padreMSerial}" >
+                            <f:selectItems value="#{tMenuController.itemsAvailableSelectOne}"
+                                           var="padreMSerialItem"
+                                           itemValue="#{padreMSerialItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tMenuController.create}" value="#{recursos.Save}" update="display,:TMenuListForm:datalist,:growl" oncomplete="handleSubmit(args,'TMenuCreateDialog');"/>
+                    <p:commandButton value="#{recursos.Cancel}" onclick="TMenuCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

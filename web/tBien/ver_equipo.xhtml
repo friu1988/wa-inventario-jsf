@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TBienViewDlg"  widgetVar="TBienViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.ViewTBienTitle}" width="800">
+            <h:form id="TBienViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mBEquipos.selected != null}" columnClasses="label,value" style="width: 100%">
+                        <h:outputText value="#{recursos.ViewTBienLabel_tbSerial}"/>
+                        <h:outputText value="#{mBEquipos.selected.tbSerial.tbNombre}" title="#{recursos.ViewTBienTitle_tbSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BSerial}"/>
+                        <h:outputText value="#{mBEquipos.selected.BSerial}" title="#{recursos.ViewTBienTitle_BSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BCodigoHee}"/>
+                        <h:outputText value="#{mBEquipos.selected.BCodigoHee}" title="#{recursos.ViewTBienTitle_BCodigoHee}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_SSerial}"/>
+                        <h:outputText value="#{mBEquipos.selected.SSerial.SNombre}" title="#{recursos.ViewTBienTitle_SSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_RSerial}"/>
+                        <h:outputText value="#{mBEquipos.selected.RSerial.RNombres}" title="#{recursos.ViewTBienTitle_RSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_MSerial}"/>
+                        <h:outputText value="#{mBEquipos.selected.MSerial.MNombre}" title="#{recursos.ViewTBienTitle_MSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BModelo}"/>
+                        <h:outputText value="#{mBEquipos.selected.BModelo}" title="#{recursos.ViewTBienTitle_BModelo}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BSerie}"/>
+                        <h:outputText value="#{mBEquipos.selected.BSerie}" title="#{recursos.ViewTBienTitle_BSerie}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BCapacidad}"/>
+                        <h:outputText value="#{mBEquipos.selected.BCapacidad}" title="#{recursos.ViewTBienTitle_BCapacidad}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BTipo}"/>
+                        <h:outputText value="#{mBEquipos.selected.BTipo}" title="#{recursos.ViewTBienTitle_BTipo}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_soSerial}"/>
+                        <h:outputText value="#{mBEquipos.selected.soSerial.soCadena}" title="#{recursos.ViewTBienTitle_soSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BIpAdress}"/>
+                        <h:outputText value="#{mBEquipos.selected.BIpAdress}" title="#{recursos.ViewTBienTitle_BIpAdress}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BEstado}"/>
+                        <p:selectBooleanCheckbox value="#{mBEquipos.selected.BEstado}" disabled="true"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BDescripcion}"/>
+                        <h:outputText value="#{mBEquipos.selected.BDescripcion}" title="#{recursos.ViewTBienTitle_BDescripcion}"/>
+                    </p:panelGrid>
+
+                    <p:separator/>
+                    <p:dataTable value="#{mBEquipos.detalles}" var="det">
+
+                        <p:column headerText="Dispositivo">
+                            <h:outputLabel value="#{det.tbSerial.tbNombre}"/>
+                        </p:column>
+                        <p:column headerText="Marca">
+                            <h:outputLabel value="#{det.MSerial.MNombre}"/>
+                        </p:column>
+                        <p:column headerText="Modelo">
+                            <h:outputLabel value="#{det.BModelo}"/>
+                        </p:column>
+                        <p:column headerText="Tipo">
+                            <h:outputLabel value="#{det.BTipo}"/>
+                        </p:column>
+                        <p:column headerText="Capacidad">
+                            <h:outputLabel value="#{det.BCapacidad}"/>
+                        </p:column>
+                    </p:dataTable>                        
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>

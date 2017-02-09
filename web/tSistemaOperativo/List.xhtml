@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template-hee.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{recursos.ListTSistemaOperativoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="TSistemaOperativoListForm">
+                <p:panel header="#{recursos.ListTSistemaOperativoTitle}">
+                    <p:dataTable id="datalist" value="#{tSistemaOperativoController.items}" var="item"
+                                 selectionMode="single" selection="#{tSistemaOperativoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.soSerial}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soNombre}">
+                            <h:outputText value="#{item.soNombre}"/>
+                        </p:column>
+                        <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soVersion}">
+                            <h:outputText value="#{item.soVersion}"/>
+                        </p:column>
+                        <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soEdicion}">
+                            <h:outputText value="#{item.soEdicion}"/>
+                        </p:column>
+                        <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soArquitectura}">
+                            <h:outputText value="#{item.soArquitectura}"/>
+                        </p:column>
+                        <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soLicencia}">
+                            <p:selectBooleanCheckbox value="#{item.soLicencia}" disabled="true"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{recursos.Create}" actionListener="#{tSistemaOperativoController.prepareCreate}" update=":TSistemaOperativoCreateForm" oncomplete="PF('TSistemaOperativoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{recursos.View}" update=":TSistemaOperativoViewForm" oncomplete="PF('TSistemaOperativoViewDialog').show()" disabled="#{empty tSistemaOperativoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{recursos.Edit}" update=":TSistemaOperativoEditForm" oncomplete="PF('TSistemaOperativoEditDialog').show()" disabled="#{empty tSistemaOperativoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{recursos.Delete}" actionListener="#{tSistemaOperativoController.destroy}" update=":growl,datalist" disabled="#{empty tSistemaOperativoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template-hee.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{recursos.ListTHistorialTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="THistorialListForm">
+                <p:panel header="#{recursos.ListTHistorialTitle}">
+                    <p:dataTable id="datalist" value="#{tHistorialController.items}" var="item"
+                                 selectionMode="single" selection="#{tHistorialController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.HSerial}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="viewButton"/>
+                        <p:ajax event="rowUnselect" update="viewButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{recursos.ListTHistorialTitle_HSerial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HSerial}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{recursos.ListTHistorialTitle_HFecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HFecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{recursos.ListTHistorialTitle_HUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HUsuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{recursos.ListTHistorialTitle_HTabla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HTabla}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{recursos.ListTHistorialTitle_HTransaccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HTransaccion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{recursos.ListTHistorialTitle_HAtributo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HAtributo}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{recursos.View}" update=":THistorialViewForm" oncomplete="PF('THistorialViewDialog').show()" disabled="#{empty tHistorialController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

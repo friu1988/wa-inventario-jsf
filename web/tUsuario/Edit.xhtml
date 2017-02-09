@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TUsuarioEditDlg" widgetVar="TUsuarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.EditTUsuarioTitle}">
+            <h:form id="TUsuarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tUsuarioController.selected != null}">
+                        <p:outputLabel value="#{recursos.EditTUsuarioLabel_UNombre}" for="UNombre" />
+                        <p:inputText id="UNombre" value="#{tUsuarioController.selected.UNombre}" title="#{recursos.EditTUsuarioTitle_UNombre}" />
+                        <p:outputLabel value="#{recursos.EditTUsuarioLabel_UClave}" for="UClave" />
+                        <p:password id="UClave" value="#{tUsuarioController.selected.UClave}" title="#{recursos.EditTUsuarioTitle_UClave}" />
+                        <p:outputLabel value="#{recursos.EditTUsuarioLabel_UTipo}" for="UTipo" />
+                        <p:selectOneMenu id="UTipo" value="#{tUsuarioController.selected.UTipo}">
+                            <f:selectItem itemLabel="#{tUsuarioController.selected.UTipo}"/>
+                            <f:selectItem itemValue="A" itemLabel="A"/>
+                            <f:selectItem itemValue="U" itemLabel="U"/>
+                            <f:selectItem itemValue="C" itemLabel="C"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{recursos.EditTUsuarioLabel_UEstado}" for="UEstado" />
+                        <p:selectBooleanCheckbox id="UEstado" value="#{tUsuarioController.selected.UEstado}" />
+                        <f:facet name="footer">
+                            <p:commandButton actionListener="#{tUsuarioController.update}" value="#{recursos.Save}" update="display,:TUsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TUsuarioEditDialog');"/>
+                            <p:commandButton value="#{recursos.Cancel}" onclick="TUsuarioEditDialog.hide()"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

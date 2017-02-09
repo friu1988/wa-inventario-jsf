@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template-hee.xhtml">
+        <ui:define name="tittle">
+            <h:outputText value="Edición"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="frm_editar_eq">
+                <h:panelGroup id="display">
+                    <p:panelGrid style="width:100%">
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="6">
+                                    <p:outputLabel value="CABECERA"/>
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Nombre:" for="tbSerial" />
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="tbSerial" value="#{mBEdicionEquipos.cabecera.tbSerial}" disabled="true">
+                                    <f:selectItem itemLabel="#{recursos.SelectOneMessage}"/>
+                                    <f:selectItems value="#{tTipoBienController.equipos}"
+                                                   var="tbSerialItem"
+                                                   itemValue="#{tbSerialItem}" itemLabel="#{tbSerialItem.tbNombre}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BSerial}" for="BSerial" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="BSerial" style="width: 95%" value="#{mBEdicionEquipos.cabecera.BSerial}" title="#{recursos.EditTBienTitle_BSerial}" disabled="true" requiredMessage="#{recursos.EditTBienRequiredMessage_BSerial}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BCodigoHee}" for="BCodigoHee" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="BCodigoHee" disabled="true" style="width: 95%" value="#{mBEdicionEquipos.cabecera.BCodigoHee}" title="#{recursos.EditTBienTitle_BCodigoHee}" />
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_RSerial}" for="RSerial" />
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:selectOneMenu id="RSerial" value="#{mBEdicionEquipos.cabecera.RSerial}">
+                                    <f:selectItem itemLabel="#{recursos.SelectOneMessage}"/>
+                                    <f:selectItems value="#{tResponsableController.itemsAvailableSelectOne}"
+                                                   var="RSerialItem"
+                                                   itemValue="#{RSerialItem}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_SSerial}" for="SSerial" />
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:selectOneMenu id="SSerial" value="#{mBEdicionEquipos.cabecera.SSerial}" >
+                                    <f:selectItem itemLabel="#{recursos.SelectOneMessage}"/>
+                                    <f:selectItems value="#{tServicioController.itemsAvailableSelectOne}"
+                                                   var="SSerialItem"
+                                                   itemValue="#{SSerialItem}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_MSerial}" for="MSerial" />
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="MSerial" value="#{mBEdicionEquipos.cabecera.MSerial}" >
+                                    <f:selectItem itemLabel="#{recursos.SelectOneMessage}"/>
+                                    <f:selectItems value="#{tMarcaController.itemsAvailableSelectOne}"
+                                                   var="MSerialItem"
+                                                   itemValue="#{MSerialItem}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BModelo}" for="BModelo" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="BModelo" style="width: 90%" value="#{mBEdicionEquipos.cabecera.BModelo}" title="#{recursos.EditTBienTitle_BModelo}" />
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Serie:" for="BSerie" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="BSerie" style="width:90%" value="#{mBEdicionEquipos.cabecera.BSerie}" title="#{recursos.EditTBienTitle_BSerie}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BCapacidad}" for="BCapacidad" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="BCapacidad" style="width: 95%" value="#{mBEdicionEquipos.cabecera.BCapacidad}" title="#{recursos.EditTBienTitle_BCapacidad}" />
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BTipo}" for="BTipo" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="BTipo" style="width: 90%" value="#{mBEdicionEquipos.cabecera.BTipo}" title="#{recursos.EditTBienTitle_BTipo}" />
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BEstado}" for="BEstado" />
+                            </p:column>                                
+                            <p:column>
+                                <p:selectBooleanCheckbox id="BEstado" value="#{mBEdicionEquipos.cabecera.BEstado}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_soSerial}" for="soSerial" />
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:selectOneMenu id="soSerial" value="#{mBEdicionEquipos.cabecera.soSerial}" >
+                                    <f:selectItem itemLabel="#{recursos.SelectOneMessage}"/>
+                                    <f:selectItems value="#{tSistemaOperativoController.itemsAvailableSelectOne}"
+                                                   var="soSerialItem"
+                                                   itemValue="#{soSerialItem}"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BIpAdress}" for="BIpAdress" />
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:inputText id="BIpAdress" style="width: 95%" value="#{mBEdicionEquipos.cabecera.BIpAdress}" title="#{recursos.EditTBienTitle_BIpAdress}" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="#{recursos.EditTBienLabel_BDescripcion}" for="BDescripcion" />
+                            </p:column>
+                            <p:column colspan="5">
+                                <p:inputTextarea id="BDescripcion"  style="width: 98%" value="#{mBEdicionEquipos.cabecera.BDescripcion}" title="#{recursos.EditTBienTitle_BDescripcion}" />
+                            </p:column> 
+                        </p:row> 
+                        <f:facet name="footer">
+                            <p:row>
+                                <p:column colspan="6">
+                                    <p:commandLink  value="Actualizar Cabecera" actionListener="#{mBEdicionEquipos.actualizarCabecera()}" update=":frm_editar_eq :growl"/>
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+                    </p:panelGrid>
+                    <p:separator/>
+                    <p:dataTable id="tbl_detalles" value="#{mBEdicionEquipos.detalles}" var="det"
+                                 selectionMode="single" selection="#{mBEdicionEquipos.detalle}"
+                                 paginator="true" rowKey="#{det.BSerial}" rows="10">
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <f:facet name="header">
+                            <p:commandButton id="createButton" 
+                                             title="Crear" 
+                                             actionListener="#{mBEdicionEquipos.prepareCreate}"
+                                             update=":frm_crear_detalle" 
+                                             icon="ui-icon-plus"
+                                             oncomplete="PF('wv_crear_det').show()"/>
+
+                            <p:commandButton id="viewButton"   
+                                             title="Ver" 
+                                             update=":frm_ver_detalle" 
+                                             oncomplete="PF('wv_ver_det').show()" 
+                                             icon="ui-icon ui-icon-search" 
+                                             disabled="#{empty mBEdicionEquipos.detalle}"/>
+                            <p:commandButton id="editButton"  
+                                             title="Editar" 
+                                             update=":frm_editar_detalle" 
+                                             oncomplete="PF('wv_editar_det').show()" 
+                                             icon="ui-icon ui-icon-pencil" 
+                                             disabled="#{empty mBEdicionEquipos.detalle}"/>
+                            <p:commandButton id="deleteButton"  
+                                             title="Eliminar" 
+                                             update=":frm_editar_eq:dlgEliminarDet" 
+                                             oncomplete="PF('wv_eliminar_det').show();" 
+                                             icon="ui-icon ui-icon-trash"  
+                                             disabled="#{empty mBEdicionEquipos.detalle}"/>
+                        </f:facet>
+
+                        <p:column headerText="Dispositivo">
+                            <h:outputLabel value="#{det.tbSerial.tbNombre}"/>
+                        </p:column>
+                        <p:column headerText="Marca">
+                            <h:outputLabel value="#{det.MSerial.MNombre}"/>
+                        </p:column>
+                        <p:column headerText="Modelo">
+                            <h:outputLabel value="#{det.BModelo}"/>
+                        </p:column>
+                        <p:column headerText="Tipo">
+                            <h:outputLabel value="#{det.BTipo}"/>
+                        </p:column>
+                        <p:column headerText="Capacidad">
+                            <h:outputLabel value="#{det.BCapacidad}"/>
+                        </p:column>
+                    </p:dataTable>    
+
+                    <p:dialog id="dlgEliminarDet" header="Eliminar Registro!" widgetVar="wv_eliminar_det" resizable="false" 
+                              showEffect="explode" hideEffect="explode" modal="true">
+                        <p:panelGrid style="width: 100%" >
+                            <p:row>
+                                <p:column>
+                                    <h:outputText value="Desea continuar con la transacción?"/>
+                                </p:column>
+                            </p:row>
+                            <f:facet name="footer">
+                                <p:row>
+                                    <p:column>
+                                        <p:commandButton value="Si" 
+                                                         actionListener="#{mBEdicionEquipos.eliminarDetalle()}"
+                                                         update=":frm_editar_eq:tbl_detalles :growl" 
+                                                         oncomplete="PF('wv_eliminar_det').hide();"/>
+                                        <p:commandButton value="No" oncomplete="PF('wv_eliminar_det').hide();"/>
+                                    </p:column>
+                                </p:row>
+                            </f:facet>
+                        </p:panelGrid>
+                    </p:dialog>
+                </h:panelGroup>
+            </h:form>
+            <ui:include src="dlg_crear_detalle.xhtml"/>
+            <ui:include src="dlg_ver_detalle.xhtml"/>
+            <ui:include src="dlg_editar_detalle.xhtml"/>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../template-hee.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">Registro de Bienes</ui:define>
+    <ui:define name="content">
+        <h:form id="frm_treetable">
+            <p:treeTable id="datalist" value="#{treeTableManagedBean.root}" var="item" 
+                         selectionMode="single" scrollable="true" scrollHeight="500"  style="margin-top:0"
+                         resizableColumns="true">
+                <f:facet name="header">
+                    Equipos y Dispositivos
+                </f:facet>
+                <p:column headerText="Código HEE" filterBy="#{item.BCodigoHee}" filterMatchMode="contains">
+                    <h:outputText value="#{item.BCodigoHee}"/>
+                </p:column>
+                <p:column headerText="Equipo"  filterBy="#{item.tbSerial.tbNombre}" filterMatchMode="contains">
+                    <h:outputText value="#{item.tbSerial.tbNombre}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <h:outputText value="#{item.MSerial.MNombre}"/>
+                </p:column>
+                <p:column headerText="Modelo">
+                    <h:outputText value="#{item.BModelo}"/>
+                </p:column>
+                <p:column headerText="Servicio">
+                    <h:outputText value="#{item.SSerial.SNombre}"/>
+                </p:column>
+                <p:column headerText="Sistema Operativo">
+                    <h:outputText value="#{item.soSerial.soCadena}"/>
+                </p:column>
+                <p:column headerText="Responsable">
+                    <h:outputText value="#{item.RSerial.RNombres}"/>
+                </p:column>
+                <p:column headerText="Modificar">
+                    <p:commandLink update=":frm_treetable:pnl_visualizar" oncomplete="PF('wv_visualizar').show()" title="Ver Detallles" styleClass="ui-icon ui-icon-search">
+                        <f:setPropertyActionListener value="#{item}" target="#{treeTableManagedBean.equipo}" />
+                    </p:commandLink>
+                    <p:commandLink update=":frm_treetable:dlg_eliminar_tree" oncomplete="PF('dlg_eliminar_det').show();" title="Eliminar Item" styleClass="ui-icon ui-icon-trash" rendered="#{mBEquipos.btnEliminar eq true}">
+                        <f:setPropertyActionListener value="#{item}" target="#{treeTableManagedBean.detalle}"  />               
+                    </p:commandLink>
+                </p:column>
+            </p:treeTable>
+            <p:dialog id="dlg_visualizar_tree" header="Detalles" showEffect="fade" widgetVar="wv_visualizar" modal="true" resizable="false">
+                <p:outputPanel id="pnl_visualizar">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="#{recursos.ViewTBienLabel_tbSerial}"/>
+                        <h:outputText value="#{item.tbSerial.tbNombre}" title="#{recursos.ViewTBienTitle_tbSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BSerial}"/>
+                        <h:outputText value="#{item.BSerial}" title="#{recursos.ViewTBienTitle_BSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BCodigoHee}"/>
+                        <h:outputText value="#{item.BCodigoHee}" title="#{recursos.ViewTBienTitle_BCodigoHee}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_padreBserial}"/>
+                        <h:outputText value="#{item.padreBserial}" title="#{recursos.ViewTBienTitle_padreBserial}"/>
+                        <h:outputText value="#{recursos.ViewTBienLabel_SSerial}"/>
+                        <h:outputText value="#{item.SSerial.SNombre}" title="#{recursos.ViewTBienTitle_SSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_RSerial}"/>
+                        <h:outputText value="#{item.RSerial.RNombres}" title="#{recursos.ViewTBienTitle_RSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_MSerial}"/>
+                        <h:outputText value="#{item.MSerial.MNombre}" title="#{recursos.ViewTBienTitle_MSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BModelo}"/>
+                        <h:outputText value="#{item.BModelo}" title="#{recursos.ViewTBienTitle_BModelo}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BSerie}"/>
+                        <h:outputText value="#{item.BSerie}" title="#{recursos.ViewTBienTitle_BSerie}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BCapacidad}"/>
+                        <h:outputText value="#{item.BCapacidad}" title="#{recursos.ViewTBienTitle_BCapacidad}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BTipo}"/>
+                        <h:outputText value="#{item.BTipo}" title="#{recursos.ViewTBienTitle_BTipo}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_soSerial}"/>
+                        <h:outputText value="#{item.soSerial.soCadena}" title="#{recursos.ViewTBienTitle_soSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BIpAdress}"/>
+                        <h:outputText value="#{item.BIpAdress}" title="#{recursos.ViewTBienTitle_BIpAdress}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BEstado}"/>
+                        <p:selectBooleanCheckbox value="#{item.BEstado}" disabled="true"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BDescripcion}"/>
+                        <h:outputText value="#{item.BDescripcion}" title="#{recursos.ViewTBienTitle_BDescripcion}"/>
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+            <p:dialog id="dlg_eliminar_tree" header="Eliminar Detalles" widgetVar="dlg_eliminar_det" resizable="false" 
+                      showEffect="explode" hideEffect="explode" modal="true">
+                <p:panelGrid style="width: 100%" >
+                    <p:row>
+                        <p:column>
+                            <h:outputText value="Desea continuar con la transacción?"/>
+                        </p:column>
+                    </p:row>
+                    <f:facet name="footer">
+                        <p:row>
+                            <p:column>
+                                <p:commandButton value="Si" actionListener="#{treeTableManagedBean.eliminarDet()}"
+                                                 update=":frm_treetable:datalist :growl" 
+                                                 oncomplete="PF('dlg_eliminar_det').hide();"/>
+                                <p:commandButton value="No" oncomplete="PF('dlg_eliminar_det').hide();"/>
+                            </p:column>
+                        </p:row>
+                    </f:facet>
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+    </ui:define>
+</ui:composition>

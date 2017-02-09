@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="dlg_crear_so" widgetVar="wv_crear_so" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Sistema Operativo">
+            <h:form id="frm_crear_so">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="3">
+                        <p:outputLabel value="Nombre: " for="lbl_nombre" />
+                        <p:inputText id="lbl_nombre" value="#{mBDialogo.sistema.soNombre}" required="true"/>
+                        <p:message for="lbl_nombre" showSummary="false"/>
+
+                        <p:outputLabel value="Versión: " for="lbl_version" />
+                        <p:inputText id="lbl_version" value="#{mBDialogo.sistema.soVersion}" required="true"/>
+                        <p:message for="lbl_version" showSummary="false"/>
+
+                        <p:outputLabel value="Edición: " for="lbl_edicion" />
+                        <p:inputText id="lbl_edicion" value="#{mBDialogo.sistema.soEdicion}" />
+                        <p:column/>
+
+                        <p:outputLabel value="Arquitectura: " for="lbl_arq" />
+                        <p:inputText id="lbl_arq" value="#{mBDialogo.sistema.soArquitectura}" required="true"/>
+                        <p:message for="lbl_arq" showSummary="false"/>
+
+                        <p:outputLabel value="Licencia: " for="lbl_lic" />
+                        <p:selectBooleanCheckbox id="lbl_lic" value="#{mBDialogo.sistema.soLicencia}" />
+                    </p:panelGrid>
+                    <p:commandButton value="Guardar" actionListener="#{mBDialogo.crearSO()}"  oncomplete="handleSubmit(args,'wv_crear_so');" update=":frm_crear_so :frm_equipo :growl"/>
+                    <p:commandButton value="Cancelar" onclick="wv_crear_so.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>
+

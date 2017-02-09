@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="dlg_crear_serv" widgetVar="wv_crear_serv" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Servicio">
+            <h:form id="frm_crear_serv">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="3">
+                        <p:outputLabel value="Codigo: " for="lbl_codigo" />
+                        <p:inputText id="lbl_codigo" value="#{mBDialogo.servicio.SCodigo}" required="true" />
+                        <p:message for="lbl_codigo" showSummary="false"/>
+
+                        <p:outputLabel value="Nombre: " for="lbl_nombre" />
+                        <p:inputText id="lbl_nombre" value="#{mBDialogo.servicio.SNombre}" required="true"/>
+                        <p:message for="lbl_nombre" showSummary="false"/>
+
+                        <p:outputLabel value="Ubicación: " for="lbl_ubic" />
+                        <p:inputText id="lbl_ubic" value="#{mBDialogo.servicio.SUbicacion}" required="true"/>
+                        <p:message for="lbl_ubic" showSummary="false"/>
+
+                        <p:outputLabel value="Descripción: " for="lbl_desc" />
+                        <p:inputText id="lbl_desc" value="#{mBDialogo.servicio.SDescripcion}" />
+                        <p:column/>
+
+                        <p:outputLabel value="Estado: " for="lbl_est" />
+                        <p:selectBooleanCheckbox id="lbl_est" value="#{mBDialogo.servicio.SEstado}"/>
+                        <p:column/>
+                    </p:panelGrid>
+                    <p:commandButton value="Guardar" actionListener="#{mBDialogo.crearServicio()}"  oncomplete="handleSubmit(args,'wv_crear_serv');" update=":frm_crear_serv :frm_equipo :growl"/>
+                    <p:commandButton value="Cancelar" onclick="wv_crear_serv.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+
+        <p:dialog id="TTipoBienCreateDlg" widgetVar="TTipoBienCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.CreateTTipoBienTitle}">
+            <h:form id="TTipoBienCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tTipoBienController.selected != null}">
+                        <p:outputLabel value="Nombre: " for="tbTipoEquipo" />
+                        <p:inputText id="tbTipoEquipo" required="true" value="#{tTipoBienController.selected.tbNombre}" title="#{recursos.CreateTTipoBienTitle_tbTipoEquipo}" />
+                        <p:outputLabel value="Categoría: " for="lbl_cat"/>
+                        <p:selectOneMenu id="lbl_cat" value="#{tTipoBienController.selected.tbTipo}">
+                            <f:selectItem itemLabel="Equipo" itemValue="EQUIPO"/>
+                            <f:selectItem itemLabel="Dispositivo" itemValue="DISPOSITIVO"/>
+                        </p:selectOneMenu>
+                        <f:facet name="footer">
+                            <p:commandButton actionListener="#{tTipoBienController.create}" value="#{recursos.Save}" update="display :TTipoBienListForm:datalist :growl" oncomplete="handleSubmit(args,'TTipoBienCreateDialog');"/>
+                            <p:commandButton value="#{recursos.Cancel}" onclick="TTipoBienCreateDialog.hide()"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

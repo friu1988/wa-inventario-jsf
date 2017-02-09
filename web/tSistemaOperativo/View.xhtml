@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TSistemaOperativoViewDlg" widgetVar="TSistemaOperativoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.ViewTSistemaOperativoTitle}">
+            <h:form id="TSistemaOperativoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tSistemaOperativoController.selected != null}">
+                        <h:outputText value="#{recursos.ViewTSistemaOperativoLabel_soSerial}"/>
+                        <h:outputText value="#{tSistemaOperativoController.selected.soSerial}" title="#{recursos.ViewTSistemaOperativoTitle_soSerial}"/>
+                        <h:outputText value="#{recursos.ViewTSistemaOperativoLabel_soNombre}"/>
+                        <h:outputText value="#{tSistemaOperativoController.selected.soNombre}" title="#{recursos.ViewTSistemaOperativoTitle_soNombre}"/>
+                        <h:outputText value="#{recursos.ViewTSistemaOperativoLabel_soVersion}"/>
+                        <h:outputText value="#{tSistemaOperativoController.selected.soVersion}" title="#{recursos.ViewTSistemaOperativoTitle_soVersion}"/>
+                        <h:outputText value="#{recursos.ViewTSistemaOperativoLabel_soEdicion}"/>
+                        <h:outputText value="#{tSistemaOperativoController.selected.soEdicion}" title="#{recursos.ViewTSistemaOperativoTitle_soEdicion}"/>
+                        <h:outputText value="#{recursos.ViewTSistemaOperativoLabel_soArquitectura}"/>
+                        <h:outputText value="#{tSistemaOperativoController.selected.soArquitectura}" title="#{recursos.ViewTSistemaOperativoTitle_soArquitectura}"/>
+                        <h:outputText value="#{recursos.ViewTSistemaOperativoLabel_soLicencia}"/>
+                        <p:selectBooleanCheckbox value="#{tSistemaOperativoController.selected.soLicencia}" disabled="true"/>
+                        <h:outputText value="#{recursos.ViewTSistemaOperativoLabel_soCadena}"/>
+                        <h:outputText value="#{tSistemaOperativoController.selected.soCadena}" title="#{recursos.ViewTSistemaOperativoTitle_soCadena}"/>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

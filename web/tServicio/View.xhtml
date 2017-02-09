@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TServicioViewDlg" widgetVar="TServicioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.ViewTServicioTitle}">
+            <h:form id="TServicioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tServicioController.selected != null}">
+                        <h:outputText value="#{recursos.ViewTServicioLabel_SSerial}"/>
+                        <h:outputText value="#{tServicioController.selected.SSerial}" title="#{recursos.ViewTServicioTitle_SSerial}"/>
+                        <h:outputText value="#{recursos.ViewTServicioLabel_SCodigo}"/>
+                        <h:outputText value="#{tServicioController.selected.SCodigo}" title="#{recursos.ViewTServicioTitle_SCodigo}"/>
+                        <h:outputText value="#{recursos.ViewTServicioLabel_SNombre}"/>
+                        <h:outputText value="#{tServicioController.selected.SNombre}" title="#{recursos.ViewTServicioTitle_SNombre}"/>
+                        <h:outputText value="#{recursos.ViewTServicioLabel_SUbicacion}"/>
+                        <h:outputText value="#{tServicioController.selected.SUbicacion}" title="#{recursos.ViewTServicioTitle_SUbicacion}"/>
+                        <h:outputText value="#{recursos.ViewTServicioLabel_SDescripcion}"/>
+                        <h:outputText value="#{tServicioController.selected.SDescripcion}" title="#{recursos.ViewTServicioTitle_SDescripcion}"/>
+                        <h:outputText value="#{recursos.ViewTServicioLabel_SEstado}"/>
+                        <p:selectBooleanCheckbox value="#{tServicioController.selected.SEstado}" disabled="true"/>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

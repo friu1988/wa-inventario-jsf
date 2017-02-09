@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TMarcaViewDlg" widgetVar="TMarcaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.ViewTMarcaTitle}">
+            <h:form id="TMarcaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tMarcaController.selected != null}">
+                        <h:outputText value="#{recursos.ViewTMarcaLabel_MSerial}"/>
+                        <h:outputText value="#{tMarcaController.selected.MSerial}" title="#{recursos.ViewTMarcaTitle_MSerial}"/>
+                        <h:outputText value="#{recursos.ViewTMarcaLabel_MNombre}"/>
+                        <h:outputText value="#{tMarcaController.selected.MNombre}" title="#{recursos.ViewTMarcaTitle_MNombre}"/>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Bienvenida</title>
+        <script Language="JavaScript">
+            if (history.forward(1)) {
+                history.replace(history.forward(1));
+            }
+        </script>
+    </h:head>
+    <h:body>
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="150">
+                <div align="center">
+                    <h:graphicImage value="/imagenes/cabecera_hee.PNG" />
+                </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h:form id="frm_login">
+
+                    <div align="center">
+                        <p:panel header="CONTROL DE ACCESO">
+                            <div align="center">
+                                <p:panel>
+                                    <p:messages autoUpdate="true"/>
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel for="txt_user" value="Usuario:"/>
+                                        <p:inputText id="txt_user" required="true" value="#{mBUsuario.user.UNombre}"/>
+
+                                        <p:outputLabel for="txt_passwd" value="Contraseña:"/>
+                                        <p:password id="txt_passwd" required="true" value="#{mBUsuario.user.UClave}"/>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <p:separator/>
+                                <p:panel>
+                                    <p:commandButton  icon="ui-icon-key" value="Iniciar Sesión" actionListener="#{mBUsuario.loguearUser()}" update="frm_login"/>
+                                </p:panel>
+                            </div>
+                        </p:panel>
+                    </div>
+                </h:form>
+
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="110">
+                <div align="center">
+                    <h:graphicImage value="/imagenes/pie_pagina_hee.PNG" />
+                </div>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+

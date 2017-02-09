@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TMantenimientoViewDlg" widgetVar="TMantenimientoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.ViewTMantenimientoTitle}">
+            <h:form id="TMantenimientoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tMantenimientoController.selected != null}">
+                        <h:outputText value="#{recursos.ViewTMantenimientoLabel_MSerial}"/>
+                        <h:outputText value="#{tMantenimientoController.selected.MSerial}" title="#{recursos.ViewTMantenimientoTitle_MSerial}"/>
+                        <h:outputText value="#{recursos.ViewTMantenimientoLabel_MTrabajoRealizado}"/>
+                        <h:outputText value="#{tMantenimientoController.selected.MTrabajoRealizado}" title="#{recursos.ViewTMantenimientoTitle_MTrabajoRealizado}"/>
+                        <h:outputText value="#{recursos.ViewTMantenimientoLabel_MFecha}"/>
+                        <h:outputText value="#{tMantenimientoController.selected.MFecha}" title="#{recursos.ViewTMantenimientoTitle_MFecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{recursos.ViewTMantenimientoLabel_MResponsable}"/>
+                        <h:outputText value="#{tMantenimientoController.selected.MResponsable}" title="#{recursos.ViewTMantenimientoTitle_MResponsable}"/>
+                        <h:outputText value="#{recursos.ViewTMantenimientoLabel_BSerial}"/>
+                        <h:outputText value="#{tMantenimientoController.selected.BSerial}" title="#{recursos.ViewTMantenimientoTitle_BSerial}"/>
+                        <h:outputText value="#{recursos.ViewTMantenimientoLabel_USerial}"/>
+                        <h:outputText value="#{tMantenimientoController.selected.USerial}" title="#{recursos.ViewTMantenimientoTitle_USerial}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{recursos.Close}" onclick="TMantenimientoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

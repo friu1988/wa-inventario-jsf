@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:dialog id="dlg_visualizar_tree" header="Detalles" showEffect="fade" widgetVar="wv_visualizar" modal="true" resizable="false">
+                <p:outputPanel id="pnl_visualizar">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="#{recursos.ViewTBienLabel_tbSerial}"/>
+                        <h:outputText value="#{item.tbSerial.tbNombre}" title="#{recursos.ViewTBienTitle_tbSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BSerial}"/>
+                        <h:outputText value="#{item.BSerial}" title="#{recursos.ViewTBienTitle_BSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BCodigoHee}"/>
+                        <h:outputText value="#{item.BCodigoHee}" title="#{recursos.ViewTBienTitle_BCodigoHee}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_padreBserial}"/>
+                        <h:outputText value="#{item.padreBserial}" title="#{recursos.ViewTBienTitle_padreBserial}"/>
+                        <h:outputText value="#{recursos.ViewTBienLabel_SSerial}"/>
+                        <h:outputText value="#{item.SSerial.SNombre}" title="#{recursos.ViewTBienTitle_SSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_RSerial}"/>
+                        <h:outputText value="#{item.RSerial.RNombres}" title="#{recursos.ViewTBienTitle_RSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_MSerial}"/>
+                        <h:outputText value="#{item.MSerial.MNombre}" title="#{recursos.ViewTBienTitle_MSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BModelo}"/>
+                        <h:outputText value="#{item.BModelo}" title="#{recursos.ViewTBienTitle_BModelo}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BSerie}"/>
+                        <h:outputText value="#{item.BSerie}" title="#{recursos.ViewTBienTitle_BSerie}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BCapacidad}"/>
+                        <h:outputText value="#{item.BCapacidad}" title="#{recursos.ViewTBienTitle_BCapacidad}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BTipo}"/>
+                        <h:outputText value="#{item.BTipo}" title="#{recursos.ViewTBienTitle_BTipo}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_soSerial}"/>
+                        <h:outputText value="#{item.soSerial.soCadena}" title="#{recursos.ViewTBienTitle_soSerial}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BIpAdress}"/>
+                        <h:outputText value="#{item.BIpAdress}" title="#{recursos.ViewTBienTitle_BIpAdress}"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BEstado}"/>
+                        <p:selectBooleanCheckbox value="#{item.BEstado}" disabled="true"/>
+
+                        <h:outputText value="#{recursos.ViewTBienLabel_BDescripcion}"/>
+                        <h:outputText value="#{item.BDescripcion}" title="#{recursos.ViewTBienTitle_BDescripcion}"/>
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+       
+    </h:body>
+</html>
+

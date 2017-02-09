@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../template-hee.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">Registro de Bienes</ui:define>
+
+    <ui:define name="content">
+        <h:form id="frm_equipo">
+            <p:panel id="panel">
+                <h:panelGroup id="pnl_group">
+                    <p:panelGrid id="pnl_grid" style="width:100%">
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="6">Registro de Equipos</p:column>
+                            </p:row>
+                        </f:facet>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="cbx_tipo_eq" value="Equipo: "/>                                        
+                            </p:column>
+                            <p:column colspan="3">
+                                <p:selectOneMenu id="cbx_tipo_eq" value="#{mBBienes.categoria.tbSerial}" required="true" disabled="#{mBBienes.bol_det eq true}">
+                                    <f:selectItem  itemLabel=""/>
+                                    <f:selectItems  value="#{tTipoBienController.equipos}" var="tipo" itemValue="#{tipo.tbSerial}" itemLabel="#{tipo.tbNombre}"/>
+                                    <f:ajax render="cbx_tipo_eq"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Código HEE: " for="lbl_chee"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="lbl_chee" style="width:100%" value="#{mBBienes.equipo.BCodigoHee}" placeholder="No asignado" required="true" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column rowspan="2"> 
+                                <p:outputLabel value="Servicio:" for="cbx_servicio"/>
+                            </p:column>
+                            <p:column colspan="3"> 
+                                <p:selectOneMenu id="cbx_servicio" value="#{mBBienes.servicio.SSerial}" required="true"  disabled="#{mBBienes.bol_det eq true}">
+                                    <f:selectItems value="#{tServicioController.items}" var="ser" itemValue="#{ser.SSerial}" itemLabel="#{ser.SNombre}"/>
+                                    <f:ajax render="cbx_servicio"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Personal a cargo: " for="cbx_responsable"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="cbx_responsable" value="#{mBBienes.responsabe.RSerial}" required="true"  disabled="#{mBBienes.bol_det eq true}">
+                                    <f:selectItems value="#{tResponsableController.items}" var="resp" itemValue="#{resp.RSerial}" itemLabel="#{resp.RNombres}"/>
+                                    <f:ajax render="cbx_responsable"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="5" styleClass="ui-widget-header">
+                                <p:spacer height="0"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Marca: " for="cbx_marc"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="cbx_marc" value="#{mBBienes.marca.MSerial}" required="true" disabled="#{mBBienes.bol_det eq true}">
+                                    <f:selectItem itemLabel=""/>
+                                    <f:selectItems value="#{tMarcaController.items}" var="mar" itemValue="#{mar.MSerial}" itemLabel="#{mar.MNombre}"/>
+                                    <f:ajax render="cbx_marc"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Modelo: " for="cbx_mod"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="cbx_mod" style="width:100%" value="#{mBBienes.equipo.BModelo}" size="10"  placeholder="No aplica" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Serie: " for="cbx_serie"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="cbx_serie" required="true" style="width:100%" value="#{mBBienes.equipo.BSerie}" size="10"  placeholder="No aplica" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Capacidad: " for="lbl_cap" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="lbl_cap" style="width:100%" value="#{mBBienes.equipo.BCapacidad}" size="10" placeholder="No aplica" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Tipo: " for="cbx_tipo"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="cbx_tipo" style="width:100%" value="#{mBBienes.equipo.BTipo}" size="10"  placeholder="No aplica" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="Estado: " for="chk_estado_dos" />
+                            </p:column>
+                            <p:column>
+                                <p:selectBooleanCheckbox id="chk_estado_dos" style="alignment-adjust: central" value="#{mBBienes.equipo.BEstado}" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column rowspan="2">
+                                <p:outputLabel value="Sistema Operativo: " for="cbx_sop"/>
+                            </p:column>
+                            <p:column colspan="3">
+                                <p:selectOneMenu id="cbx_sop" value="#{mBBienes.sistema.soSerial}" required="true"  disabled="#{mBBienes.bol_det eq true}">
+                                    <f:selectItems value="#{tSistemaOperativoController.items}" var="so" itemValue="#{so.soSerial}" itemLabel="#{so.soCadena}"/>
+                                    <f:ajax render="cbx_sop"/>
+                                </p:selectOneMenu>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel value="IP-Address: " for="lbl_ip"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="lbl_ip" style="width:100%" value="#{mBBienes.equipo.BIpAdress}" size="43" placeholder="No aplica" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="5" styleClass="ui-widget-header">
+                                <p:spacer height="0"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Observación:" for="cbx_obs"/>
+                            </p:column>
+                            <p:column colspan="5">
+                                <p:inputTextarea id="cbx_obs" style="width:100%" value="#{mBBienes.equipo.BDescripcion}" disabled="#{mBBienes.bol_det eq true}"/>
+                            </p:column>
+                        </p:row>
+                        <f:facet name="footer">
+                            <p:row>
+                                <p:column colspan="6">
+                                    <p:commandButton id="btn_reg" value="Registrar" icon="ui-icon-disk" rendered="#{mBBienes.bol_det eq false}" actionListener="#{mBBienes.crearEquipo()}" update=":frm_equipo :growl"/>
+                                    <p:commandButton id="btn_new" value="Crear equipo nuevo" icon="ui-icon-refresh" rendered="#{mBBienes.bol_det eq true}" actionListener="#{mBBienes.limpiar()}" update=":frm_equipo"/>          
+                                    <p:commandButton id="btn_add" value="Agregar dispositivos" icon="ui-icon-plus" rendered="#{mBBienes.bol_det eq true}"  onclick="PF('wv_crear_det').show();" update=":frm_crear_detalle"/>
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </p:panel>
+            <p:separator/>
+            <p:panel rendered="#{mBBienes.bol_det eq true and tBienController.tbl_det eq true }">
+                <p:dataTable id="datalist" value="#{tBienController.detalles}" var="det"
+                             paginator="true"
+                             rowKey="#{item.tbSerial}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
+                    <p:column headerText="Cod-HEE">
+                        <p:outputLabel value="#{det.BCodigoHee}"/>
+                    </p:column>
+                    <p:column headerText="Dispositivo">
+                        <p:outputLabel value="#{det.tbSerial.tbNombre}"/>
+                    </p:column>
+                    <p:column headerText="Marca">
+                        <p:outputLabel value="#{det.MSerial.MNombre}"/>
+                    </p:column>
+                    <p:column headerText="Bitácora:">
+                        <p:outputLabel value="#{det.BDescripcion}"/>
+                    </p:column>
+                    <p:column headerText="Modificaciones">
+                        <p:commandLink value="Editar" oncomplete="PF('wv_editar_det').show();" update=":frm_editar_det" title="Editar dispositivo" styleClass="ui-icon ui-icon-pencil">
+                            <f:setPropertyActionListener target="#{tBienController.detalle}" value="#{det}"/>
+                        </p:commandLink>
+                        <p:commandLink value="Eliminar" oncomplete="PF('dlg_eliminar_det').show();" update=":formEliminar" title="Eliminar dispositivo" styleClass="ui-icon ui-icon-trash">
+                            <f:setPropertyActionListener target="#{tBienController.detalle}" value="#{det}" />               
+                        </p:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+        <ui:include src="/usuarios-tic/dlg_editar_detalle.xhtml"/>
+        <ui:include src="/usuarios-tic/dlg-crear-detalle.xhtml"/>
+        <h:form id="formEliminar">
+            <p:dialog id="dlgEliminarCarrera" header="Eliminar Registro!" widgetVar="dlg_eliminar_det" resizable="false" 
+                      showEffect="explode" hideEffect="explode" modal="true">
+
+                <p:panelGrid style="width: 100%" >
+                    <p:row>
+                        <p:column>
+                            <h:outputText value="Desea continuar con la transacción?"/>
+                        </p:column>
+                    </p:row>
+                    <f:facet name="footer">
+                        <p:row>
+                            <p:column>
+                                <p:commandButton value="Si" actionListener="#{tBienController.eliminarDet()}"
+                                                 update=":frm_equipo:datalist :growl" 
+                                                 oncomplete="PF('dlg_eliminar_det').hide();"/>
+                                <p:commandButton value="No" oncomplete="PF('dlg_eliminar_det').hide();"/>
+                            </p:column>
+                        </p:row>
+                    </f:facet>
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

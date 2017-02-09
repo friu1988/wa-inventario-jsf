@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+        <p:dialog id="dlg_ver_det" widgetVar="wv_ver_det" modal="true" resizable="false" appendTo="@(body)" header="Dispositivo ">
+            <h:form id="frm_ver_detalle">
+                <p:panelGrid style="width: 100%">
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Dispositivo: "/>                                        
+                        </p:column>
+                        <p:column colspan="3">
+                            <p:outputLabel value="#{mBEdicionEquipos.detalle.tbSerial.tbNombre}"/>     
+                        </p:column>
+                    </p:row> 
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Código TIC:"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{mBEdicionEquipos.detalle.BSerial}"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Código HEE:"/>        
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{mBEdicionEquipos.detalle.BCodigoHee}" />
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Marca: "/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{mBEdicionEquipos.detalle.MSerial.MNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Capacidad: "/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{mBEdicionEquipos.detalle.BCapacidad}"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Modelo: "/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{mBEdicionEquipos.detalle.BModelo}"/>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="Tipo: " />
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel  value="#{mBEdicionEquipos.detalle.BTipo}"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Serie: " />
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel  value="#{mBEdicionEquipos.detalle.BSerie}"/>
+                        </p:column>
+
+                        <p:column>
+                            <p:outputLabel value="Estado: "/>
+                        </p:column>
+                        <p:column>
+                            <p:selectBooleanCheckbox value="#{mBEdicionEquipos.detalle.BEstado}" disabled="true"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="Observación:"/>
+                        </p:column>
+                        <p:column colspan="3">
+                            <p:outputLabel  value="#{mBEdicionEquipos.detalle.BDescripcion}"/>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>

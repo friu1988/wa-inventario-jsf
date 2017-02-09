@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+
+        <p:dialog id="dlg_crear_tipo" widgetVar="wv_crear_tipo" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Tipo">
+            <h:form id="frm_crear_tipo">
+                <p:message for="lbl_descripcion" showSummary="false"/>
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Nombre: " for="lbl_descripcion" />
+                        <p:inputText id="lbl_descripcion" value="#{mBDialogo.categoria.tbNombre}" required="true"/>
+                        <p:outputLabel value="Categoría: " for="lbl_cat"/>
+                        <p:selectOneMenu id="lbl_cat" value="#{mBDialogo.categoria.tbTipo}">
+                            <f:selectItem itemLabel="Equipo" itemValue="EQUIPO"/>
+                            <f:selectItem itemLabel="Dispositivo" itemValue="DISPOSITIVO"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton value="Guardar" actionListener="#{mBDialogo.crearTipoBien}"  oncomplete="handleSubmit(args,'wv_crear_tipo');" update=":frm_crear_tipo :frm_equipo:cbx_tipo_eq :growl"/>
+                    <p:commandButton value="Cancelar" onclick="wv_crear_tipo.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TBienCreateDlg" widgetVar="TBienCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.CreateTBienTitle}">
+            <h:form id="TBienCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tBienController.selected != null}">
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BCodigoHee}" for="BCodigoHee" />
+                        <p:inputText id="BCodigoHee" style="width: 100%" value="#{tBienController.selected.BCodigoHee}" title="#{recursos.CreateTBienTitle_BCodigoHee}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BIpAdress}" for="BIpAdress" />
+                        <p:inputText id="BIpAdress" style="width: 100%" value="#{tBienController.selected.BIpAdress}" title="#{recursos.CreateTBienTitle_BIpAdress}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BModelo}" for="BModelo" />
+                        <p:inputText id="BModelo" style="width: 100%" value="#{tBienController.selected.BModelo}" title="#{recursos.CreateTBienTitle_BModelo}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BSerie}" for="BSerie" />
+                        <p:inputText id="BSerie" style="width: 100%" value="#{tBienController.selected.BSerie}" title="#{recursos.CreateTBienTitle_BSerie}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BTipo}" for="BTipo" />
+                        <p:inputText id="BTipo" style="width: 100%" value="#{tBienController.selected.BTipo}" title="#{recursos.CreateTBienTitle_BTipo}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BCapacidad}" for="BCapacidad" />
+                        <p:inputText id="BCapacidad" style="width: 100%" value="#{tBienController.selected.BCapacidad}" title="#{recursos.CreateTBienTitle_BCapacidad}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BDescripcion}" for="BDescripcion" />
+                        <p:inputText id="BDescripcion" style="width: 100%" value="#{tBienController.selected.BDescripcion}" title="#{recursos.CreateTBienTitle_BDescripcion}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_BEstado}" for="BEstado" />
+                        <p:selectBooleanCheckbox id="BEstado" value="#{tBienController.selected.BEstado}" />
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_MSerial}" for="MSerial" />
+                        <p:selectOneMenu id="MSerial" value="#{tBienController.selected.MSerial}" >
+                            <f:selectItems value="#{tMarcaController.itemsAvailableSelectOne}"
+                                           var="MSerialItem"
+                                           itemValue="#{MSerialItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_padreBserial}" for="padreBserial" />
+                        <p:selectOneMenu id="padreBserial" value="#{tBienController.selected.padreBserial}" >
+                            <f:selectItems value="#{tBienController.itemsAvailableSelectOne}"
+                                           var="padreBserialItem"
+                                           itemValue="#{padreBserialItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_SSerial}" for="SSerial" />
+                        <p:selectOneMenu id="SSerial" value="#{tBienController.selected.SSerial}" >
+                            <f:selectItems value="#{tServicioController.itemsAvailableSelectOne}"
+                                           var="SSerialItem"
+                                           itemValue="#{SSerialItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_soSerial}" for="soSerial" />
+                        <p:selectOneMenu id="soSerial" value="#{tBienController.selected.soSerial}" >
+                            <f:selectItems value="#{tSistemaOperativoController.itemsAvailableSelectOne}"
+                                           var="soSerialItem"
+                                           itemValue="#{soSerialItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_RSerial}" for="RSerial" />
+                        <p:selectOneMenu id="RSerial" value="#{tBienController.selected.RSerial}" >
+                            <f:selectItems value="#{tResponsableController.itemsAvailableSelectOne}"
+                                           var="RSerialItem"
+                                           itemValue="#{RSerialItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{recursos.CreateTBienLabel_tbSerial}" for="tbSerial" />
+                        <p:selectOneMenu id="tbSerial" value="#{tBienController.selected.tbSerial}" >
+                            <f:selectItems value="#{tTipoBienController.itemsAvailableSelectOne}"
+                                           var="tbSerialItem"
+                                           itemValue="#{tbSerialItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tBienController.create}" value="#{recursos.Save}" update="display,:TBienListForm:datalist,:growl" oncomplete="handleSubmit(args,'TBienCreateDialog');"/>
+                    <p:commandButton value="#{recursos.Cancel}" onclick="TBienCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

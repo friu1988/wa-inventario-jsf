@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+
+        <p:dialog id="TServicioEditDlg" widgetVar="TServicioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.EditTServicioTitle}">
+            <h:form id="TServicioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tServicioController.selected != null}">
+                        <p:outputLabel value="#{recursos.EditTServicioLabel_SCodigo}" for="SCodigo" />
+                        <p:inputText id="SCodigo"  size="80" value="#{tServicioController.selected.SCodigo}" title="#{recursos.EditTServicioTitle_SCodigo}" />
+                        <p:outputLabel value="#{recursos.EditTServicioLabel_SNombre}" for="SNombre" />
+                        <p:inputText id="SNombre" size="80" value="#{tServicioController.selected.SNombre}" title="#{recursos.EditTServicioTitle_SNombre}" />
+                        <p:outputLabel value="#{recursos.EditTServicioLabel_SUbicacion}" for="SUbicacion" />
+                        <p:inputText id="SUbicacion" size="80" value="#{tServicioController.selected.SUbicacion}" title="#{recursos.EditTServicioTitle_SUbicacion}" />
+                        <p:outputLabel value="#{recursos.EditTServicioLabel_SDescripcion}" for="SDescripcion" />
+                        <p:inputText id="SDescripcion" size="80" value="#{tServicioController.selected.SDescripcion}" title="#{recursos.EditTServicioTitle_SDescripcion}" />
+                        <p:outputLabel value="#{recursos.EditTServicioLabel_SEstado}" for="SEstado" />
+                        <p:selectBooleanCheckbox id="SEstado" value="#{tServicioController.selected.SEstado}" />
+                        <f:facet name="footer">
+                            <p:commandButton actionListener="#{tServicioController.update}" value="#{recursos.Save}" update="display,:TServicioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TServicioEditDialog');"/>
+                            <p:commandButton value="#{recursos.Cancel}" onclick="TServicioEditDialog.hide()"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

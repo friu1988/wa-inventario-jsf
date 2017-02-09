@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TMenuViewDlg" widgetVar="TMenuViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.ViewTMenuTitle}">
+            <h:form id="TMenuViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tMenuController.selected != null}">
+                        <h:outputText value="#{recursos.ViewTMenuLabel_MSerial}"/>
+                        <h:outputText value="#{tMenuController.selected.MSerial}" title="#{recursos.ViewTMenuTitle_MSerial}"/>
+                        <h:outputText value="#{recursos.ViewTMenuLabel_MOrden}"/>
+                        <h:outputText value="#{tMenuController.selected.MOrden}" title="#{recursos.ViewTMenuTitle_MOrden}"/>
+                        <h:outputText value="#{recursos.ViewTMenuLabel_MNombre}"/>
+                        <h:outputText value="#{tMenuController.selected.MNombre}" title="#{recursos.ViewTMenuTitle_MNombre}"/>
+                        <h:outputText value="#{recursos.ViewTMenuLabel_MUrl}"/>
+                        <h:outputText value="#{tMenuController.selected.MUrl}" title="#{recursos.ViewTMenuTitle_MUrl}"/>
+                        <h:outputText value="#{recursos.ViewTMenuLabel_MTipo}"/>
+                        <h:outputText value="#{tMenuController.selected.MTipo}" title="#{recursos.ViewTMenuTitle_MTipo}"/>
+                        <h:outputText value="#{recursos.ViewTMenuLabel_MNivel}"/>
+                        <h:outputText value="#{tMenuController.selected.MNivel}" title="#{recursos.ViewTMenuTitle_MNivel}"/>
+                        <h:outputText value="#{recursos.ViewTMenuLabel_padreMSerial}"/>
+                        <h:outputText value="#{tMenuController.selected.padreMSerial}" title="#{recursos.ViewTMenuTitle_padreMSerial}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{recursos.Close}" onclick="TMenuViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

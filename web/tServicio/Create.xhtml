@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+        <p:dialog id="TServicioCreateDlg" widgetVar="TServicioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.CreateTServicioTitle}">
+            <h:form id="TServicioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tServicioController.selected != null}">
+                        <p:outputLabel value="#{recursos.CreateTServicioLabel_SCodigo}" for="SCodigo" />
+                        <p:inputText id="SCodigo" required="true" value="#{tServicioController.selected.SCodigo}" title="#{recursos.CreateTServicioTitle_SCodigo}" />
+                        <p:outputLabel value="#{recursos.CreateTServicioLabel_SNombre}" for="SNombre" />
+                        <p:inputText id="SNombre" required="true" value="#{tServicioController.selected.SNombre}" title="#{recursos.CreateTServicioTitle_SNombre}" />
+                        <p:outputLabel value="#{recursos.CreateTServicioLabel_SUbicacion}" for="SUbicacion" />
+                        <p:inputText id="SUbicacion" required="true" value="#{tServicioController.selected.SUbicacion}" title="#{recursos.CreateTServicioTitle_SUbicacion}" />
+                        <p:outputLabel value="#{recursos.CreateTServicioLabel_SDescripcion}" for="SDescripcion" />
+                        <p:inputText id="SDescripcion" value="#{tServicioController.selected.SDescripcion}" title="#{recursos.CreateTServicioTitle_SDescripcion}" />
+                        <p:outputLabel value="#{recursos.CreateTServicioLabel_SEstado}" for="SEstado" />
+                        <p:selectBooleanCheckbox id="SEstado" value="#{tServicioController.selected.SEstado}"  />
+                        <f:facet name="footer">
+                            <p:commandButton actionListener="#{tServicioController.create}" value="#{recursos.Save}" update="display,:TServicioListForm:datalist,:growl" oncomplete="handleSubmit(args,'TServicioCreateDialog');"/>
+                            <p:commandButton value="#{recursos.Cancel}" onclick="TServicioCreateDialog.hide()"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>

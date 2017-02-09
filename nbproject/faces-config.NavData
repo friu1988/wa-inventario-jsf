@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="tTipoBien/View.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="tMantenimiento/Create.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="tResponsable/View.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="tSistemaOperativo/Create.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="tResponsable/List.xhtml" x="1900" y="300" zoom="true"/>
+        <Node id="tTipoBien/Create.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="tServicio/Create.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="tMarca/Edit.xhtml" x="1400" y="750" zoom="true"/>
+        <Node id="tServicio/List.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="tServicio/View.xhtml" x="2150" y="300" zoom="true"/>
+        <Node id="tUsuario/Create.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="tTipoBien/List.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="tTipoBien/Edit.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="tMarca/View.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="tMenu/View.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="tServicio/Edit.xhtml" x="1650" y="450" zoom="true"/>
+        <Node id="index.xhtml" x="900" y="900" zoom="true"/>
+        <Node id="tResponsable/Edit.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="tMantenimiento/View.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="tMantenimiento/List.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="tBien/Edit.xhtml" x="1900" y="450" zoom="true"/>
+        <Node id="login.xhtml" x="235" y="413" zoom="false"/>
+        <Node id="tUsuario/Edit.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="usuarios-tic/dlg_crear_resp.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="tHistorial/View.xhtml" x="650" y="900" zoom="true"/>
+        <Node id="tMenu/Create.xhtml" x="2400" y="150" zoom="true"/>
+        <Node id="tBien/Create.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="tMenu/List.xhtml" x="400" y="1200" zoom="true"/>
+        <Node id="usuarios-tic/dlg_editar_detalle.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="tHistorial/List.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="tResponsable/Create.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="usuarios-tic/equipo.xhtml" x="400" y="1050" zoom="true"/>
+        <Node id="usuarios-tic/dlg-crear-detalle.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="tSistemaOperativo/List.xhtml" x="900" y="1050" zoom="true"/>
+        <Node id="usuarios-tic/dlg_crear_serv.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="tSistemaOperativo/View.xhtml" x="1400" y="600" zoom="true"/>
+        <Node id="usuarios-tic/test.xhtml" x="1150" y="750" zoom="true"/>
+        <Node id="tBien/List.xhtml" x="400" y="450" zoom="false"/>
+        <Node id="tHistorial/Create.xhtml" x="650" y="1050" zoom="true"/>
+        <Node id="template.xhtml" x="150" y="1200" zoom="true"/>
+        <Node id="tSistemaOperativo/Edit.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="tUsuario/List.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="tMarca/List.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="tMantenimiento/Edit.xhtml" x="650" y="1200" zoom="true"/>
+        <Node id="tHistorial/Edit.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="tUsuario/View.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="usuarios-tic/dlg_crear_so.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="tMarca/Create.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="usuarios-tic/dlg_crear_tipo_bien.xhtml" x="150" y="1350" zoom="true"/>
+        <Node id="tMenu/Edit.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="tBien/View.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="usuarios-tic/bienvenida.xhtml" x="1650" y="600" zoom="true"/>
+        <Node id="template-hee.xhtml" x="1150" y="900" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

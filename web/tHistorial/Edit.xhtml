@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="THistorialEditDlg" widgetVar="THistorialEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{recursos.EditTHistorialTitle}">
+            <h:form id="THistorialEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tHistorialController.selected != null}">
+                        <p:outputLabel value="#{recursos.EditTHistorialLabel_HSerial}" for="HSerial" />
+                        <p:inputText id="HSerial" value="#{tHistorialController.selected.HSerial}" title="#{recursos.EditTHistorialTitle_HSerial}" required="true" requiredMessage="#{recursos.EditTHistorialRequiredMessage_HSerial}"/>
+                        <p:outputLabel value="#{recursos.EditTHistorialLabel_HFecha}" for="HFecha" />
+                        <p:calendar id="HFecha" pattern="MM/dd/yyyy" value="#{tHistorialController.selected.HFecha}" title="#{recursos.EditTHistorialTitle_HFecha}"  showOn="button"/>
+                        <p:outputLabel value="#{recursos.EditTHistorialLabel_HUsuario}" for="HUsuario" />
+                        <p:inputText id="HUsuario" value="#{tHistorialController.selected.HUsuario}" title="#{recursos.EditTHistorialTitle_HUsuario}" />
+                        <p:outputLabel value="#{recursos.EditTHistorialLabel_HTabla}" for="HTabla" />
+                        <p:inputText id="HTabla" value="#{tHistorialController.selected.HTabla}" title="#{recursos.EditTHistorialTitle_HTabla}" />
+                        <p:outputLabel value="#{recursos.EditTHistorialLabel_HTransaccion}" for="HTransaccion" />
+                        <p:inputText id="HTransaccion" value="#{tHistorialController.selected.HTransaccion}" title="#{recursos.EditTHistorialTitle_HTransaccion}" />
+                        <p:outputLabel value="#{recursos.EditTHistorialLabel_HAtributo}" for="HAtributo" />
+                        <p:inputText id="HAtributo" value="#{tHistorialController.selected.HAtributo}" title="#{recursos.EditTHistorialTitle_HAtributo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tHistorialController.update}" value="#{recursos.Save}" update="display,:THistorialListForm:datalist,:growl" oncomplete="handleSubmit(args, 'THistorialEditDialog');"/>
+                    <p:commandButton value="#{recursos.Cancel}" onclick="THistorialEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
