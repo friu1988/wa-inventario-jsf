@@ -69,7 +69,7 @@ public class MBEquipos implements Serializable {
         List<TBien> resultado = new LinkedList<>();
 
         for (TBien tBien : temporal) {
-            if (tBien.getPadreBserial() == null) {
+           if (tBien.getPadreBserial() == null) {
                 resultado.add(tBien);
             }
             

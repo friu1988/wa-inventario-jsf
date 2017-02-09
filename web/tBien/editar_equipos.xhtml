@@ -188,12 +188,17 @@
                                              icon="ui-icon ui-icon-trash"  
                                              disabled="#{empty mBEdicionEquipos.detalle}"/>
                         </f:facet>
-
+                          <p:column headerText="Código HEE">
+                              <h:outputLabel value="#{det.BCodigoHee}"/>
+                        </p:column>
                         <p:column headerText="Dispositivo">
                             <h:outputLabel value="#{det.tbSerial.tbNombre}"/>
                         </p:column>
                         <p:column headerText="Marca">
                             <h:outputLabel value="#{det.MSerial.MNombre}"/>
+                        </p:column>
+                         <p:column headerText="Serie">
+                             <h:outputLabel value="#{det.BSerie}"/>
                         </p:column>
                         <p:column headerText="Modelo">
                             <h:outputLabel value="#{det.BModelo}"/>
@@ -204,6 +209,10 @@
                         <p:column headerText="Capacidad">
                             <h:outputLabel value="#{det.BCapacidad}"/>
                         </p:column>
+                          <p:column>
+                                <p:selectBooleanCheckbox id="BEstado" value="#{mBEdicionEquipos.cabecera.BEstado}"/>
+                            </p:column>
+                      
                     </p:dataTable>    
 
                     <p:dialog id="dlgEliminarDet" header="Eliminar Registro!" widgetVar="wv_eliminar_det" resizable="false" 
