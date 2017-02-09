@@ -20,6 +20,7 @@ public class MBEquipos implements Serializable {
     private com.capa.negocios.TBienFacade srvEq;
     private List<TBien> equipos = null;
     private List<TBien> detalles = null;
+    private List<TBien> dispositivos= null;
     private TBien selected;
     private TUsuario us;
     private boolean btnCrear = true;
@@ -57,6 +58,7 @@ public class MBEquipos implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dispositivo ELIMINADO! ", null));
             selected = null;
             equipos = null;
+            dispositivos=null;
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Eliminar primero los Detalles! " + e.getMessage(), null));
         }
@@ -70,10 +72,24 @@ public class MBEquipos implements Serializable {
             if (tBien.getPadreBserial() == null) {
                 resultado.add(tBien);
             }
+            
+        }
+        return resultado;
+    }
+ public List<TBien> cargarDispositivos() {
+        List<TBien> temporal = srvEq.findAll();
+        List<TBien> resultado = new LinkedList<>();
+
+        for (TBien tBien : temporal) {
+            if (tBien.getPadreBserial() == null) {
+                resultado.add(tBien);
+            }
+            
         }
         return resultado;
     }
 
+    
     public List<TBien> getEquipos() {
         if (equipos == null) {
             equipos = cargarEquipos();
@@ -84,6 +100,18 @@ public class MBEquipos implements Serializable {
     public void setEquipos(List<TBien> equipos) {
         this.equipos = equipos;
     }
+
+    public List<TBien> getDispositivos() {
+        if (dispositivos == null) {
+            dispositivos = cargarDispositivos();
+        }
+        return dispositivos;
+    }
+
+    public void setDispositivos(List<TBien> dispositivos) {
+        this.dispositivos = dispositivos;
+    }
+    
 
     public TBien getSelected() {
 //        if (selected == null) {
