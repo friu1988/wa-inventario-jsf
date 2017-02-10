@@ -84,7 +84,7 @@ public class TTipoBienController implements Serializable {
 
     public List<TTipoBien> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacade().getAlls();
         }
         return items;
     }
@@ -122,11 +122,11 @@ public class TTipoBienController implements Serializable {
     }
 
     public List<TTipoBien> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        return getFacade().getAlls();
     }
 
     public List<TTipoBien> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        return getFacade().getAlls();
     }
 
     @FacesConverter(forClass = TTipoBien.class)

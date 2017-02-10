@@ -30,7 +30,7 @@
                         <p:column headerText="#{recursos.ListTServicioTitle_SCodigo}">
                             <h:outputText value="#{item.SCodigo}"/>
                         </p:column>
-                        <p:column headerText="#{recursos.ListTServicioTitle_SNombre}">
+                        <p:column headerText="#{recursos.ListTServicioTitle_SNombre}" filterBy="#{item.SNombre}" filterMatchMode="contains">
                             <h:outputText value="#{item.SNombre}"/>
                         </p:column>
                         <p:column headerText="#{recursos.ListTServicioTitle_SUbicacion}">

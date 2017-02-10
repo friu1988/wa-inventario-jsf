@@ -27,7 +27,7 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soNombre}">
+                        <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soNombre}" sortBy="#{item.soNombre}" filterBy="#{item.soNombre}" filterMatchMode="contains">
                             <h:outputText value="#{item.soNombre}"/>
                         </p:column>
                         <p:column headerText="#{recursos.ListTSistemaOperativoTitle_soVersion}">

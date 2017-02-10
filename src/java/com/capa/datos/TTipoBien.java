@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TTipoBien.findAll", query = "SELECT t FROM TTipoBien t ORDER BY t.tbNombre"),
+    @NamedQuery(name = "TTipoBien.findAlls", query = "SELECT t FROM TTipoBien t ORDER BY t.tbTipo"),
     @NamedQuery(name = "TTipoBien.findByTbSerial", query = "SELECT t FROM TTipoBien t WHERE t.tbSerial = :tbSerial"),
     @NamedQuery(name = "TTipoBien.findByTbNombre", query = "SELECT t FROM TTipoBien t WHERE t.tbNombre = :tbNombre ORDER BY t.tbNombre"),
     @NamedQuery(name = "TTipoBien.findByTbTipo", query = "SELECT t FROM TTipoBien t WHERE t.tbTipo = :tbTipo ORDER BY t.tbNombre")})

@@ -33,7 +33,7 @@
                             </f:facet>
                             <h:outputText value="#{item.RSerial}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.RNombres}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{recursos.ListTResponsableTitle_RNombres}"/>
                             </f:facet>

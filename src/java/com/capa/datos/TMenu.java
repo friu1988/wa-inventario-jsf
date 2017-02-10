@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TMenu.findByMOrden", query = "SELECT t FROM TMenu t WHERE t.mOrden = :mOrden"),
     @NamedQuery(name = "TMenu.findByMNombre", query = "SELECT t FROM TMenu t WHERE t.mNombre = :mNombre"),
     @NamedQuery(name = "TMenu.findByMUrl", query = "SELECT t FROM TMenu t WHERE t.mUrl = :mUrl"),
-    @NamedQuery(name = "TMenu.findByMTipo", query = "SELECT t FROM TMenu t WHERE t.mTipo = :mTipo"),
+    @NamedQuery(name = "TMenu.findByMTipo", query = "SELECT t FROM TMenu t WHERE t.mTipo = :mTipo ORDER BY t.mOrden"),
     @NamedQuery(name = "TMenu.findByMNivel", query = "SELECT t FROM TMenu t WHERE t.mNivel = :mNivel")})
 public class TMenu implements Serializable {
 

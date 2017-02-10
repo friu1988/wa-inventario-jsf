@@ -61,14 +61,11 @@ public class MBControlAcceso implements Serializable {
 
         for (TMenu itm : menus) {
             if (itm.getMNivel() == 1) {
-//                System.out.println("Menus: " + itm.getMMenu());
                 DefaultSubMenu subMenu = new DefaultSubMenu(itm.getMNombre());
                 for (TMenu itsm : menus) {
                     if ((itsm.getMNivel() == 2) && (itsm.getPadreMSerial().getMSerial() == itm.getMSerial())) {
-//                        System.out.println("Items: " + itsm.getMMenu());
                         DefaultMenuItem item = new DefaultMenuItem(itsm.getMNombre());
                         item.setUrl(itsm.getMUrl());
-//                        System.out.println("URL: " + item.getUrl());
                         subMenu.addElement(item);
                     }
                 }
