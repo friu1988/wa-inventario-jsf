@@ -66,12 +66,19 @@
                         <p:column headerText="Modelo">
                             <h:outputLabel value="#{det.BModelo}"/>
                         </p:column>
+                         <p:column headerText="Serie">
+                             <h:outputLabel value="#{det.BSerie}"/>
+                        </p:column>
                         <p:column headerText="Tipo">
                             <h:outputLabel value="#{det.BTipo}"/>
                         </p:column>
                         <p:column headerText="Capacidad">
                             <h:outputLabel value="#{det.BCapacidad}"/>
                         </p:column>
+                        <p:column headerText="Estado">
+                            <p:selectBooleanCheckbox value="#{mBEdicionEquipos.detalle.BEstado}" disabled="true"/>
+                        </p:column>
+                        
                     </p:dataTable>                        
                 </h:panelGroup>
             </h:form>

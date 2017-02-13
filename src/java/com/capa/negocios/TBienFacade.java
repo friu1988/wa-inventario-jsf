@@ -51,8 +51,8 @@ public class TBienFacade extends AbstractFacade<TBien> {
         }
         return null;
     }
-    
-    public List<TBien> findDispositivos(){
+
+    public List<TBien> findDispositivos() {
         Query sql = em.createNamedQuery("TBien.findDispositivos");
         try {
             List<TBien> lista = sql.getResultList();
@@ -62,4 +62,18 @@ public class TBienFacade extends AbstractFacade<TBien> {
         }
         return null;
     }
+
+    public boolean findPadreUnico(String inputHEE) {
+        boolean existe = false;
+        Query sql = em.createNamedQuery("TBien.findByBCodigoHee");
+        System.out.println("Codigo SB: " + inputHEE);
+        sql.setParameter("bCodigoHee", inputHEE);
+        List<TBien> bienes = sql.getResultList();
+
+        if (bienes.size() > 0) {
+            existe = true;
+        }
+        return existe;
+    }
+
 }

@@ -14,14 +14,19 @@
                         <p:column>
                             <p:outputLabel value="Dispositivo: "/>                                        
                         </p:column>
-                        <p:column colspan="3">
+                        <p:column colspan="1">
                             <p:outputLabel value="#{mBEdicionEquipos.detalle.tbSerial.tbNombre}"/>     
                         </p:column>
-                         <p:column>
-                               <p:outputLabel value="Cabecera"  />
+                        <p:column>
+                            <p:outputLabel value="Pertenece a Equipo: "/>                                        
                         </p:column>
-                           <p:column>
-                               <p:inputText value="#{mBEdicionEquipos.detalle.BCodigoHee}"  />
+                        <p:column>
+                            <p:selectOneMenu id="padreBserial" value="#{mBEdicionEquipos.detalle.padreBserial}" >
+                                <f:selectItem itemLabel="#{recursos.SelectOneMessage}"/>
+                                <f:selectItems value="#{tBienController.cabeceras}"
+                                               var="padreBserialItem"
+                                               itemValue="#{padreBserialItem}"/>
+                            </p:selectOneMenu>
                         </p:column>
                     </p:row> 
                     <p:row>
@@ -32,10 +37,10 @@
                             <p:outputLabel value="#{mBEdicionEquipos.detalle.BSerial}"/>
                         </p:column>
                         <p:column>
-                            <p:outputLabel value="Código HEE:"/>        
+                            <p:outputLabel value="Código HEE DV:"/>        
                         </p:column>
                         <p:column>
-                            <p:outputLabel value="#{mBEdicionEquipos.detalle.padreBserial}"  />
+                            <p:inputText value="#{mBEdicionEquipos.detalle.BCodigoHee}"  />
                         </p:column>
                     </p:row>
                     <p:row>

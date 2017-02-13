@@ -59,7 +59,7 @@ public class TBien implements Serializable {
     @Column(name = "b_codigo_hee", length = 50)
     private String bCodigoHee;
     @Size(max = 18)
-    @Column(name = "b_ip_adress", length = 18)
+    @Column(name = "b_ip_adress", length = 200)
     private String bIpAdress;
     @Size(max = 50)
     @Column(name = "b_modelo", length = 50)

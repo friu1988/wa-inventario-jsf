@@ -110,22 +110,31 @@ public class MBBienes implements Serializable {
     }
 
     public void crearEquipo() {
-        Calendar cal = Calendar.getInstance();
-        equipo.setTbSerial(categoria);
-        equipo.setSSerial(servicio);
-        equipo.setRSerial(responsabe);
-        equipo.setSoSerial(sistema);
-        equipo.setMSerial(marca);
-        equipo.setbRegistro(cal.getTime());
+        boolean unico;
+        unico = srvEq.findPadreUnico(equipo.getBCodigoHee());
+        System.out.println("Unico Cod HEE: " + unico);
+        if (!unico) {
 
-        try {
-            srvEq.create(equipo);
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("equipoPK", equipo);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Equipo ingresado: " + equipo.getBSerial(), null));
-            bol_det = true;
-        } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Código HEE DUPLICADO" + e.getMessage(), null));
+            Calendar cal = Calendar.getInstance();
+            equipo.setTbSerial(categoria);
+            equipo.setSSerial(servicio);
+            equipo.setRSerial(responsabe);
+            equipo.setSoSerial(sistema);
+            equipo.setMSerial(marca);
+            equipo.setbRegistro(cal.getTime());
+
+            try {
+                srvEq.create(equipo);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("equipoPK", equipo);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Equipo ingresado: " + equipo.getBSerial(), null));
+                bol_det = true;
+            } catch (Exception e) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Código HEE DUPLICADO" + e.getMessage(), null));
+            }
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Código HEE ya existe! ", null));
         }
+
     }
 
     public List<TServicio> getServicios() {
