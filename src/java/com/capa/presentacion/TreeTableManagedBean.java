@@ -46,7 +46,8 @@ public class TreeTableManagedBean implements Serializable {
         for (TBien it : equipos) {
             if (it.getPadreBserial() == null) {
                 TreeNode raiz = new DefaultTreeNode(it, this.root);
-                System.out.println("Equipo: " + it.getBSerial());
+                raiz.setExpanded(true);
+//                System.out.println("Equipo: " + it.getBSerial());
                 cargarNodo(it, raiz);
             }
         }
@@ -56,7 +57,7 @@ public class TreeTableManagedBean implements Serializable {
         try {
             detalles = servicio.buscarDet(it);
             for (TBien it1 : detalles) {
-                System.out.println("Detalle: " + it1.getPadreBserial());
+//                System.out.println("Detalle: " + it1.getPadreBserial());
                 TreeNode nodo = new DefaultTreeNode(it1, raiz);
             }
         } catch (Exception e) {
@@ -67,6 +68,7 @@ public class TreeTableManagedBean implements Serializable {
     public TreeNode getRoot() {
         if (root == null) {
             root = new DefaultTreeNode();
+            root.setExpanded(true);
             setEquipos(servicio.findAll());
             cargarRaiz();
         }

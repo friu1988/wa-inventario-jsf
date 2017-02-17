@@ -114,7 +114,6 @@ public class MBBienes implements Serializable {
         unico = srvEq.findPadreUnico(equipo.getBCodigoHee());
         System.out.println("Unico Cod HEE: " + unico);
         if (!unico) {
-
             Calendar cal = Calendar.getInstance();
             equipo.setTbSerial(categoria);
             equipo.setSSerial(servicio);

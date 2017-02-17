@@ -44,15 +44,15 @@ public class MBUsuario implements Serializable {
                 switch (op) {
                     case "A":
                         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cuenta Administrador", null));
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("./../faces/usuarios-tic/bienvenida.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("./../usuarios-tic/bienvenida.jsf");
                         break;
                     case "U":
                         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cuenta Usuarios", null));
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("./../faces/usuarios-tic/bienvenida.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("./../usuarios-tic/bienvenida.jsf");
                         break;
                     case "C":
                         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cuenta Consultas!", null));
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("./../faces/usuarios-tic/bienvenida.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("./../usuarios-tic/bienvenida.jsf");
                         break;
                     default:
                         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en el APP", null));
