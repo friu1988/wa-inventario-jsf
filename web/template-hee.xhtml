@@ -22,16 +22,10 @@
     </h:head>
     <!--<body onload="Javascript:history.go(1);" onunload="Javascript:history.go(1);">-->
     <h:body>
-
         <p:growl id="growl" life="3000"/>
-
         <div id="top">
             <div align="center">
-                <!--                <h:graphicImage value="/imagenes/cabecera_hee.PNG" />-->
-                <br/>
-                <h1>Hospital de Especialidades</h1>
-                <h1>"Eugenio Espejo"</h1>
-                <br/>
+                <h:graphicImage value="/imagenes/logo_msp.png"/>
             </div>
             <ui:insert name="top"></ui:insert>
         </div>
@@ -59,12 +53,10 @@
                                 <p:commandButton icon="ui-icon-extlink" actionListener="#{mBControlAcceso.cerrarSesion()}"/>        
                             </f:facet>
                         </p:menubar>
-
                     </h:form>
                     <ui:insert name="content"></ui:insert>
                 </div>
             </div>
         </div>        
     </h:body>
-
 </html>
